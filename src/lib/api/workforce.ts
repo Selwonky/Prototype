@@ -3,7 +3,7 @@ import type {
   Employee, Applicant, Job, Attendance, Resource, LunchOrder,
 } from "@/lib/types/workforce";
 import { departmentRoutes } from "@/lib/types/departments";
-import { apiGet, apiGetList, apiPost, apiCreate, apiPut, apiDelete, ApiClientError, ModelUnavailableError } from "./client";
+import { apiGet, apiGetList, apiCreate, apiPut, apiDelete, ApiClientError, ModelUnavailableError } from "./client";
 
 const R = departmentRoutes.workforce;
 

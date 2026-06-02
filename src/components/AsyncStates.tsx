@@ -1,4 +1,3 @@
-import * as React from "react";
 import { Loader2, AlertCircle, Inbox, FlaskConical, CloudOff } from "lucide-react";
 import type { SurfaceMeta } from "@/lib/types/commons";
 

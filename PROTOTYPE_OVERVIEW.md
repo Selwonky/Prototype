@@ -1,7 +1,7 @@
 # Jo from PLG — Commons Clickable Prototype · Build Output & Rubric Grade
 
 **Location:** `~/commons-preview` (local repo, not in `platform-plg-front` — built to fold in later).
-**Stack:** Vite + React 19 + TypeScript + Tailwind v4. **Consumes the canonical `@jofrom/design-system`** (local clone `~/Jo_Design_System`, `Selwonky/Jo_Design_System`) from source — tokens, primitives, and domain components.
+**Stack:** Vite + React 19 + TypeScript + Tailwind v4. **Consumes the canonical `@jofrom/design-system`** (local clone `~/jofrom-design-system`, `Selwonky/jofrom-design-system`) from source — tokens, primitives, templates, and domain components.
 
 ## Design system consumption
 - **Tokens:** the prototype loads the DS's own `tokens.css`/`base.css`/`utilities.css` (TailAdmin Tailwind-v4 scale: `brand`=#0055ff, `gray`, `accent`=#9333ea, `success/warning/error`, `theme-*`, two-tone sidebar) via `src/styles.css`, with an `@theme` bridge mapping the DS semantic HSL tokens to color utilities.

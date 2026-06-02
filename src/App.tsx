@@ -13,6 +13,8 @@ import { ObjectDetailPage } from "@/pages/ObjectDetailPage";
 import { DepartmentPage } from "@/pages/DepartmentPage";
 import { OrgChartPage } from "@/pages/OrgChartPage";
 import { SettingsPage } from "@/pages/SettingsPage";
+import { TemplatesPage } from "@/pages/TemplatesPage";
+import { TemplateDetailPage } from "@/pages/TemplateDetailPage";
 
 export default function App() {
   return (
@@ -35,6 +37,8 @@ export default function App() {
             <Route path="/objects/detail/:id" element={<ObjectDetailPage />} />
             <Route path="/objects/:type" element={<ObjectsPage />} />
             <Route path="/departments/:dept" element={<DepartmentPage />} />
+            <Route path="/templates" element={<TemplatesPage />} />
+            <Route path="/templates/:slug" element={<TemplateDetailPage />} />
             <Route path="/settings/:setting" element={<SettingsPage />} />
           </Route>
 

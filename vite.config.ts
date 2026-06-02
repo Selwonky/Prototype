@@ -2,20 +2,9 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 import path from 'node:path'
-import os from 'node:os'
-
-// Local canonical design system (consumed from source — kept local, not published).
-const DS = path.resolve(os.homedir(), 'jofrom-design-system/src')
 const nm = (m: string) => path.resolve(__dirname, 'node_modules', m)
 
-// DS subpath exports → DS source entrypoints.
-const dsSubpaths = [
-  'ui', 'form', 'icons', 'widgets', 'data-display', 'charts',
-  'sections', 'feedback', 'shells', 'layout', 'components',
-]
-
-// The DS lives in a sibling dir with no node_modules, so its bare imports must
-// resolve to THIS app's installed copies (and React must be deduped).
+// Shared dependencies are deduped so the design-system package and app use one React runtime.
 const sharedDeps = [
   'clsx', 'tailwind-merge', 'lucide-react', 'recharts',
   '@radix-ui/react-alert-dialog', '@radix-ui/react-checkbox', '@radix-ui/react-dialog',
@@ -29,13 +18,6 @@ export default defineConfig({
   resolve: {
     dedupe: ['react', 'react-dom'],
     alias: [
-      { find: '@jofrom/design-system/styles.css', replacement: path.join(DS, 'styles.css') },
-      ...dsSubpaths.map((p) => ({
-        find: `@jofrom/design-system/${p}`,
-        replacement: path.join(DS, 'components', p === 'components' ? '' : p, 'index.ts'),
-      })),
-      { find: '@jofrom/design-system', replacement: path.join(DS, 'index.ts') },
-      // shared singletons/deps for the source-consumed DS
       { find: /^react$/, replacement: nm('react') },
       { find: /^react-dom$/, replacement: nm('react-dom') },
       { find: 'react/jsx-runtime', replacement: nm('react/jsx-runtime') },
@@ -46,6 +28,6 @@ export default defineConfig({
   },
   server: {
     port: 4321,
-    fs: { allow: [path.resolve(__dirname), DS, path.dirname(DS)] },
+    fs: { allow: [path.resolve(__dirname)] },
   },
 })

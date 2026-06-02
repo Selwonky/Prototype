@@ -44,8 +44,8 @@ export interface QueueAction {
   status: string;
   sourceObjectId?: string;
   updatedAt: string;
-  step: string;
-  nextOutput: string;
+  step?: string;
+  nextOutput?: string;
 }
 
 export interface OutputRecord {

@@ -1,7 +1,7 @@
 import type { SurfaceMeta } from "@/lib/types/commons";
 import type { Payment, AccountMove, AccountJournal, PaymentProvider } from "@/lib/types/finance";
 import { departmentRoutes } from "@/lib/types/departments";
-import { apiGet, apiGetList, apiPost, apiCreate, apiPut, apiDelete, ApiClientError, ModelUnavailableError } from "./client";
+import { apiGet, apiGetList, apiCreate, apiPut, apiDelete, ApiClientError, ModelUnavailableError } from "./client";
 
 const R = departmentRoutes.finance;
 

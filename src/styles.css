@@ -1,5 +1,5 @@
 /* Commons prototype style entry — consumes the canonical @jofrom/design-system
-   tokens from the application DS (~/jofrom-design-system). Single Tailwind v4 entry.
+   tokens from the application DS package. Single Tailwind v4 entry.
    --------------------------------------------------------------------------
    Contrast rule (always): if the button/surface is dark, the text is light;
    if it's light, the text is dark. Use semantic pairs that auto-flip with
@@ -14,12 +14,10 @@
 
 /* Design-system foundation: TailAdmin @theme scales + semantic HSL tokens
    (light + .dark) + base resets + utilities. */
-@import "../../jofrom-design-system/src/styles/tokens.css";
-@import "../../jofrom-design-system/src/styles/base.css";
-@import "../../jofrom-design-system/src/styles/utilities.css";
+@import "@jofrom/design-system/styles.css";
 
 /* Scan the DS source so its utility classes are generated. */
-@source "../../jofrom-design-system/src/**/*.{ts,tsx}";
+@source "../node_modules/@jofrom/design-system/src/**/*.{ts,tsx}";
 
 /* Bridge: register the DS semantic HSL tokens as Tailwind color utilities so
    the prototype's semantic classes (bg-primary, bg-card, bg-sidebar, …) resolve
@@ -66,5 +64,5 @@
 /* Surface scale uses the design-system defaults — standard shadcn/slate:
    - Light mode: pure white canvas, subtle off-white side nav.
    - Dark  mode: deep slate canvas, slightly darker side nav.
-   Defined upstream in ~/jofrom-design-system/src/styles/tokens.css; no
+   Defined upstream in @jofrom/design-system/src/styles/tokens.css; no
    prototype-level override needed. */

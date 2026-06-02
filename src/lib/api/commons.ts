@@ -15,10 +15,6 @@ function live(route: string): SurfaceMeta {
   return { source: "api", contractStatus: "live", route };
 }
 
-function unavailable(route: string): SurfaceMeta {
-  return { source: "api", contractStatus: "pending", route };
-}
-
 function isFallback(e: unknown): boolean {
   return e instanceof ApiClientError || e instanceof ModelUnavailableError;
 }

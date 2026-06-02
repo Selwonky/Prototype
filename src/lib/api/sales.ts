@@ -1,4 +1,3 @@
-import type { ApiListSuccess, ApiSuccess, ApiCreateSuccess, ApiDeleteSuccess } from "@/lib/types/api";
 import type { SurfaceMeta } from "@/lib/types/commons";
 import type {
   SalesDashboardSummary, CrmStage, CrmLead, Contact, Company,

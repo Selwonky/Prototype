@@ -1,7 +1,7 @@
 import {
   LayoutGrid, Inbox, Activity, History, Workflow, Radio, Briefcase, CircleCheck,
   Zap, Boxes, Megaphone, Users, Wallet, Server, LifeBuoy, Calculator, Workflow as Ops,
-  Scale, Shield, Plug, CreditCard, Compass, TrendingUp, Network, FlaskConical,
+  Scale, Shield, Plug, CreditCard, Compass, TrendingUp, Network, FlaskConical, PanelsTopLeft,
   type LucideIcon,
 } from "lucide-react";
 import type { DepartmentId, ObjectType } from "./prototype-data";
@@ -56,6 +56,7 @@ export const navGroups: NavGroup[] = [
       { label: "Tasks", to: "/objects/task", icon: CircleCheck },
       { label: "Actions", to: "/objects/action", icon: Zap },
       { label: "Blocks", to: "/objects/block", icon: Boxes },
+      { label: "Templates", to: "/templates", icon: PanelsTopLeft },
     ],
   },
   {

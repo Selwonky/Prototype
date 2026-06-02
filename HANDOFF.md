@@ -6,7 +6,7 @@ Snapshot to resume work on another machine. Everything below is local-only or in
 
 A clickable PLG prototype for **Jo from — The Commons** (Maestro OrgChart product surface). Vite + React 19 + TypeScript + Tailwind v4. Mock-data only, no backend.
 
-The prototype **consumes the canonical design system from source** — `Selwonky/Jo_Design_System` cloned locally — via Vite path aliases. No published `@jofrom/design-system` package; the alias resolves to `~/Jo_Design_System/src` on disk.
+The prototype **consumes the canonical design system from source** — `Selwonky/jofrom-design-system` cloned locally — via Vite path aliases. No published `@jofrom/design-system` package; the alias resolves to `~/jofrom-design-system/src` on disk.
 
 ## Repos
 
@@ -85,7 +85,7 @@ src/
 ## Design-system consumption
 
 - **Tokens.** Prototype loads the DS's own `tokens.css` / `base.css` / `utilities.css`. Brand blue `#0055ff`, accent purple `#9333ea`, two-tone operational sidebar (lavender → deep-purple in dark), `theme-*` text + shadows. A small `@theme` bridge in `src/styles.css` maps the DS semantic HSL vars to Tailwind color utilities so prototype classes (`bg-primary`, `bg-card`, `bg-sidebar`, …) keep resolving.
-- **Vite aliases.** `@jofrom/design-system/*` → `~/Jo_Design_System/src/...`. Shared deps (react / radix / lucide / recharts / clsx / tailwind-merge) are explicitly aliased to this app's `node_modules` and react is **deduped**, so the source-consumed DS resolves cleanly.
+- **Vite aliases.** `@jofrom/design-system/*` → `~/jofrom-design-system/src/...`. Shared deps (react / radix / lucide / recharts / clsx / tailwind-merge) are explicitly aliased to this app's `node_modules` and react is **deduped**, so the source-consumed DS resolves cleanly.
 - **Components used.** Primitives — `Button`, `Card`, `Badge`, `Select`, `Dialog`, `Tooltip`, `Progress`, form `Input/Textarea/Label`. Domain — `KPIGrid` + `StatCard` (Home), `IntegrationCard` (Tools), `EntityHeader` + `ActivityTimeline` (object detail), `FilterTabs` (department tabs), `KanbanColumn` + `KanbanCard` (object boards).
 - **Four gap shims kept local** (not in the DS): avatar, separator, sheet, stepper. Sonner is retained for toasts.
 
