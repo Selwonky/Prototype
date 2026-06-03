@@ -13,6 +13,8 @@ const sharedDeps = [
   '@radix-ui/react-tabs', '@radix-ui/react-toast', '@radix-ui/react-tooltip',
 ]
 
+const radixPkgs = sharedDeps.filter((d) => d.startsWith('@radix-ui/'))
+
 export default defineConfig({
   plugins: [react(), tailwindcss()],
   resolve: {
@@ -25,6 +27,16 @@ export default defineConfig({
       ...sharedDeps.map((m) => ({ find: m, replacement: nm(m) })),
       { find: '@', replacement: path.resolve(__dirname, './src') },
     ],
+  },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks(id: string) {
+          if (id.includes('recharts')) return 'recharts'
+          if (radixPkgs.some((p) => id.includes(p))) return 'radix'
+        },
+      },
+    },
   },
   server: {
     port: 4321,

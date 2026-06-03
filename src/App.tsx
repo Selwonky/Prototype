@@ -1,26 +1,29 @@
+import { lazy, Suspense } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { Toaster } from "sonner";
 import { CommonsProvider } from "@/lib/store";
 import { CommonsShell } from "@/components/CommonsShell";
-import { WelcomePage } from "@/pages/WelcomePage";
-import { OnboardingPage } from "@/pages/OnboardingPage";
 import { HomePage } from "@/pages/HomePage";
 import { InboxPage } from "@/pages/InboxPage";
 import { QueuePage } from "@/pages/QueuePage";
 import { RecentPage } from "@/pages/RecentPage";
 import { ObjectsPage } from "@/pages/ObjectsPage";
 import { ObjectDetailPage } from "@/pages/ObjectDetailPage";
-import { DepartmentPage } from "@/pages/DepartmentPage";
-import { OrgChartPage } from "@/pages/OrgChartPage";
-import { SettingsPage } from "@/pages/SettingsPage";
-import { TemplatesPage } from "@/pages/TemplatesPage";
-import { TemplateDetailPage } from "@/pages/TemplateDetailPage";
+
+const WelcomePage = lazy(() => import("@/pages/WelcomePage").then(m => ({ default: m.WelcomePage })));
+const OnboardingPage = lazy(() => import("@/pages/OnboardingPage").then(m => ({ default: m.OnboardingPage })));
+const DepartmentPage = lazy(() => import("@/pages/DepartmentPage").then(m => ({ default: m.DepartmentPage })));
+const OrgChartPage = lazy(() => import("@/pages/OrgChartPage").then(m => ({ default: m.OrgChartPage })));
+const SettingsPage = lazy(() => import("@/pages/SettingsPage").then(m => ({ default: m.SettingsPage })));
+const TemplatesPage = lazy(() => import("@/pages/TemplatesPage").then(m => ({ default: m.TemplatesPage })));
+const TemplateDetailPage = lazy(() => import("@/pages/TemplateDetailPage").then(m => ({ default: m.TemplateDetailPage })));
 
 export default function App() {
   return (
     <CommonsProvider>
       <Toaster position="bottom-right" richColors closeButton />
       <BrowserRouter>
+        <Suspense fallback={null}>
         <Routes>
           {/* Entry points (no shell). */}
           <Route path="/" element={<Navigate to="/home" replace />} />
@@ -44,6 +47,7 @@ export default function App() {
 
           <Route path="*" element={<Navigate to="/home" replace />} />
         </Routes>
+        </Suspense>
       </BrowserRouter>
     </CommonsProvider>
   );
