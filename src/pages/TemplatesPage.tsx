@@ -9,7 +9,7 @@ export function TemplatesPage() {
     <>
       <PageHeader
         title="Templates"
-        description={`${clientAccountDashboardTemplates.length} reusable dashboard templates from the Jofrom design system.`}
+        description={`${clientAccountDashboardTemplates.length} reusable Notion-style page templates from the Jofrom design system.`}
         actions={<ButtonLink to="/home" variant="outline">Home</ButtonLink>}
       />
 
@@ -28,7 +28,7 @@ export function TemplatesPage() {
             <CardContent className="space-y-4">
               <div className="flex flex-wrap gap-2">
                 <Badge color="brand" variant="outline">{template.segment}</Badge>
-                <Badge color="success" variant="outline">{template.metrics[0].value} health</Badge>
+                <Badge color="success" variant="outline">{template.kind}</Badge>
               </div>
               <Link
                 className="inline-flex h-10 w-full items-center justify-center rounded-lg border border-control-border bg-white px-4 py-2 text-theme-sm font-medium text-gray-700 transition-colors hover:bg-gray-50 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-brand-500/15 dark:bg-gray-900 dark:text-gray-200 dark:hover:bg-gray-800"
