@@ -2,7 +2,8 @@ export function getAccessToken(): string | null {
   return null;
 }
 
-export function setAccessToken(_token: string): void {
+export function setAccessToken(token: string): void {
+  void token;
   // future: persist to sessionStorage or memory
 }
 

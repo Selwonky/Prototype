@@ -6,12 +6,12 @@ import { navGroups, deptCategories } from "@/lib/navigation";
 import type { DepartmentId } from "@/lib/prototype-data";
 import { Input } from "@jofrom/design-system/form";
 import { Button } from "@jofrom/design-system/ui";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Avatar } from "@jofrom/design-system/ui";
 import { Badge } from "@jofrom/design-system/ui";
-import { Sheet, SheetContent, SheetTitle, SheetHeader, SheetDescription } from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetTitle, SheetHeader, SheetDescription } from "@jofrom/design-system/ui";
 import { EmptyState } from "@jofrom/design-system/ui";
 import { cn } from "@/lib/utils";
-import { useCommons } from "@/lib/store";
+import { useCommons } from "@/lib/use-commons";
 import { objectById, departments } from "@/lib/prototype-data";
 
 function Logo({ compact }: { compact?: boolean }) {
@@ -37,7 +37,7 @@ function NavList({ collapsed, onNavigate }: { collapsed: boolean; onNavigate?: (
       {navGroups.map((group) => (
         <div key={group.label}>
           {!collapsed && (
-            <p className="px-3 pb-1.5 text-[11px] font-medium uppercase tracking-wider text-sidebar-foreground/40">
+            <p className="px-3 pb-1.5 text-caption font-medium uppercase tracking-wider text-sidebar-foreground/40">
               {group.label}
             </p>
           )}
@@ -93,7 +93,7 @@ function Sidebar({ collapsed, onToggle }: { collapsed: boolean; onToggle: () => 
         collapsed ? "justify-center" : "justify-between px-3"
       )}>
         {!collapsed && (
-          <span className="truncate text-[11px] text-sidebar-foreground/40">Prototype · fixture data</span>
+          <span className="truncate text-caption text-sidebar-foreground/40">Prototype · fixture data</span>
         )}
         <button
           type="button"
@@ -123,6 +123,10 @@ const tools = [
   { id: "notes", label: "Notes", Icon: StickyNote, description: "Quick captures, decisions, and reference notes.", body: "Your notes will appear here once Tools are connected." },
 ] as const;
 
+function TopBarDivider() {
+  return <span aria-hidden className="mx-1 hidden h-5 w-px shrink-0 bg-muted-foreground/20 md:inline-block" />;
+}
+
 function TopBar({ onOpenMobile }: { onOpenMobile: () => void }) {
   const { pathname, search } = useLocation();
   const { theme, toggle } = useTheme();
@@ -130,9 +134,6 @@ function TopBar({ onOpenMobile }: { onOpenMobile: () => void }) {
   const deptId = parts[0] === "departments" ? (parts[1] as DepartmentId | undefined) : undefined;
   const deptCats = deptId ? deptCategories[deptId] : undefined;
   const currentCat = new URLSearchParams(search).get("cat") ?? deptCats?.[0].value;
-  const Divider = () => (
-    <span aria-hidden className="mx-1 hidden h-5 w-px shrink-0 bg-muted-foreground/20 md:inline-block" />
-  );
   const [openTool, setOpenTool] = React.useState<string | null>(null);
   const activeTool = tools.find((t) => t.id === openTool);
   return (
@@ -152,13 +153,13 @@ function TopBar({ onOpenMobile }: { onOpenMobile: () => void }) {
         return (
           <nav aria-label="Breadcrumb" className="hidden items-center gap-1 text-sm text-muted-foreground sm:flex">
             <span className="text-muted-foreground/40">/</span>
-            <span className="max-w-[16rem] truncate font-medium text-foreground">{label}</span>
+            <span className="max-w-64 truncate font-medium text-foreground">{label}</span>
           </nav>
         );
       })()}
 
       {/* Divider between page indicator and the consistent tools. */}
-      <Divider />
+      <TopBarDivider />
 
       {/* Consistent global tools: open as overlays — the page route stays
           unchanged. Wide: words only. Narrow: icons only. */}
@@ -211,7 +212,7 @@ function TopBar({ onOpenMobile }: { onOpenMobile: () => void }) {
       {/* Divider + the 6 dept-specific tabs (when on a department page). */}
       {deptCats && (
         <>
-          <Divider />
+          <TopBarDivider />
           <nav aria-label="Department views" className="hidden min-w-0 items-center gap-1 overflow-x-auto md:flex">
             {deptCats.map((c) => {
               const active = c.value === currentCat;
@@ -249,9 +250,7 @@ function TopBar({ onOpenMobile }: { onOpenMobile: () => void }) {
       <Button variant="ghost" size="icon" className="h-9 w-9" aria-label="Notifications">
         <Bell className="size-4" />
       </Button>
-      <Avatar size="sm">
-        <AvatarFallback>JK</AvatarFallback>
-      </Avatar>
+      <Avatar fallback="JK" size="sm" />
     </header>
   );
 }

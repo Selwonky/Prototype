@@ -1,7 +1,6 @@
 import * as React from "react";
 import { ChevronRight, Sparkles, FileCheck2 } from "lucide-react";
-import { Card, CardHeader, CardTitle, CardDescription, CardContent, Badge } from "@jofrom/design-system/ui";
-import { Separator } from "@/components/ui/separator";
+import { Card, CardHeader, CardTitle, CardDescription, CardContent, Badge, Separator } from "@jofrom/design-system/ui";
 import { PageHeader } from "@/components/primitives";
 import { cn } from "@/lib/utils";
 import { orgChart, type OrgJob } from "@/lib/prototype-data";
@@ -27,8 +26,8 @@ export function OrgChartPage() {
         title="OrgChart"
         description="How work is structured beneath you. Tasks roll up to jobs, jobs roll up to departments, and Workflow Seeds produce Compiler Records."
       />
-      <div className="mb-6 flex flex-wrap items-center gap-2 rounded-lg border bg-gradient-to-r from-primary/5 to-[#9333ea]/5 px-4 py-3 text-sm">
-        <Sparkles className="size-4 text-[#9333ea]" />
+      <div className="mb-6 flex flex-wrap items-center gap-2 rounded-lg border bg-gradient-to-r from-primary/5 to-accent-600/5 px-4 py-3 text-sm">
+        <Sparkles className="size-4 text-accent-600" />
         <span><span className="font-medium">You're the Outcome Owner</span> (Head of). Jo from handles IC through Manager work and brings decisions to your Inbox.</span>
       </div>
       <div className="mb-5 flex flex-wrap gap-2 text-xs">
@@ -127,8 +126,8 @@ export function OrgChartPage() {
                     ))}
                   </div>
                   {job.workflowSeeds[seed] && (
-                    <div className="mt-3 rounded-lg border bg-gradient-to-br from-primary/5 to-[#9333ea]/10 p-3">
-                      <p className="mb-1 flex items-center gap-1.5 text-xs font-medium text-[#9333ea]">
+                    <div className="mt-3 rounded-lg border bg-gradient-to-br from-primary/5 to-accent-600/10 p-3">
+                      <p className="mb-1 flex items-center gap-1.5 text-xs font-medium text-accent-600">
                         <Sparkles className="size-3.5" /> Output preview
                       </p>
                       <p className="text-sm">{job.workflowSeeds[seed].outputPreview}</p>

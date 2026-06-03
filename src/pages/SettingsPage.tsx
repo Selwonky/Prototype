@@ -4,7 +4,7 @@ import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter, 
 import { IntegrationCard } from "@jofrom/design-system/data-display";
 import { PageHeader, EmptyState } from "@/components/primitives";
 import { tools } from "@/lib/prototype-data";
-import { useCommons } from "@/lib/store";
+import { useCommons } from "@/lib/use-commons";
 
 function ToolsSettings() {
   const { toolState, toggleTool } = useCommons();

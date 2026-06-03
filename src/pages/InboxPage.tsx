@@ -1,15 +1,14 @@
 import * as React from "react";
 import { Check, Pencil, X, Inbox as InboxIcon, Loader2 } from "lucide-react";
-import { Card, Button, Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from "@jofrom/design-system/ui";
+import { Card, Button, Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter, Separator } from "@jofrom/design-system/ui";
 import { Textarea } from "@jofrom/design-system/form";
-import { Separator } from "@/components/ui/separator";
 import {
   Sheet, SheetContent, SheetHeader, SheetTitle, SheetDescription, SheetFooter,
-} from "@/components/ui/sheet";
+} from "@jofrom/design-system/ui";
 import { PageHeader, EmptyState } from "@/components/primitives";
 import { StatusBadge } from "@/components/StatusBadge";
 import { deptLabel, objectById, type InboxItem } from "@/lib/prototype-data";
-import { useCommons } from "@/lib/store";
+import { useCommons } from "@/lib/use-commons";
 
 export function InboxPage() {
   const { inbox, inboxState, edits, rejectReasons, approve, reject, saveEdit } = useCommons();

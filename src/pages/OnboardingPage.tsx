@@ -2,11 +2,10 @@ import * as React from "react";
 import { useNavigate } from "react-router-dom";
 import { Sparkles, Check, Star, Plus, Globe, ArrowRight, ArrowLeft, CircleCheck, Pencil } from "lucide-react";
 import {
-  Card, CardHeader, CardTitle, CardDescription, CardContent, Badge, Button, Progress,
+  Card, CardHeader, CardTitle, CardDescription, CardContent, Badge, Button, Progress, Separator,
   Select, SelectContent, SelectItem, SelectTrigger, SelectValue,
 } from "@jofrom/design-system/ui";
 import { Input, Label, Textarea } from "@jofrom/design-system/form";
-import { Separator } from "@/components/ui/separator";
 import { Stepper } from "@/components/ui/stepper";
 import { cn } from "@/lib/utils";
 import { industryMatches, moreIndustries, type IndustryMatch } from "@/lib/prototype-data";
@@ -367,12 +366,12 @@ export function OnboardingPage() {
         return (
           <Card>
             <CardContent className="flex flex-col items-center gap-4 py-12 text-center">
-              <span className="grid size-14 place-items-center rounded-2xl bg-gradient-to-br from-primary to-[#9333ea] text-white"><Check className="size-7" /></span>
+              <span className="grid size-14 place-items-center rounded-lg bg-gradient-to-br from-primary to-accent-600 text-white"><Check className="size-7" /></span>
               <div>
                 <h2 className="text-xl font-semibold">You're all set.</h2>
                 <p className="mt-1 text-muted-foreground">We'll set up your workspace and show the right work areas.</p>
               </div>
-              <Button size="lg" className="bg-gradient-to-br from-primary to-[#9333ea] text-white hover:opacity-90" onClick={() => navigate("/home")}>
+              <Button size="lg" className="bg-gradient-to-br from-primary to-accent-600 text-white hover:opacity-90" onClick={() => navigate("/home")}>
                 Enter The Commons <ArrowRight className="size-4" />
               </Button>
             </CardContent>

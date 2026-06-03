@@ -27,7 +27,6 @@ export function DepartmentPage() {
   const categoryParam = searchParams.get("cat") ?? categories?.[0].value ?? "all";
 
   const [status, setStatus] = React.useState<string>("active");
-  React.useEffect(() => { setStatus("active"); }, [dept]);
 
   if (!meta) {
     return <EmptyState icon={Boxes} title="Unknown department" description="This work area isn't part of the prototype yet." />;

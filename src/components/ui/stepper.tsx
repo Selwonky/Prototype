@@ -44,7 +44,7 @@ const connectorVariants = cva("transition-colors", {
   variants: {
     orientation: {
       horizontal: "h-0.5 flex-1 mx-2",
-      vertical: "w-0.5 h-8 my-2 ml-[18px]",
+      vertical: "ml-4 h-8 w-0.5 my-2",
     },
     status: {
       completed: "bg-primary",
@@ -233,5 +233,5 @@ function Stepper({
   )
 }
 
-export { Stepper, stepperVariants, stepVariants, connectorVariants }
+export { Stepper }
 export type { Step, StepperProps }

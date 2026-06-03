@@ -6,7 +6,7 @@ import {
   actionStatusKind, actionStatusLabel, deptLabel,
   type ActionStatus,
 } from "@/lib/prototype-data";
-import { useCommons } from "@/lib/store";
+import { useCommons } from "@/lib/use-commons";
 
 const lifecycle: ActionStatus[] = [
   "draft", "queued", "running", "needs_approval", "completed", "failed", "cancelled",

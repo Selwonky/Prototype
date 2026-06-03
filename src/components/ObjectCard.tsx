@@ -4,7 +4,7 @@ import {
   Handshake, Users, Shield, ShieldCheck, FileBadge, BadgeCheck, type LucideIcon,
 } from "lucide-react";
 import { Card, CardHeader, CardContent, CardFooter } from "@jofrom/design-system/ui";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Avatar } from "@jofrom/design-system/ui";
 import { StatusBadge } from "./StatusBadge";
 import { ButtonLink } from "./primitives";
 import { getInitials } from "@/lib/utils";
@@ -67,9 +67,7 @@ export function ObjectCard({ obj }: { obj: WorkObject }) {
 
       <CardFooter className="gap-2 text-theme-sm text-gray-500 dark:text-gray-400">
         <div className="flex min-w-0 flex-1 items-center gap-2">
-          <Avatar size="sm" className="shrink-0">
-            <AvatarFallback>{getInitials(obj.owner.replace("Jo from ", ""))}</AvatarFallback>
-          </Avatar>
+          <Avatar size="xs" fallback={getInitials(obj.owner.replace("Jo from ", ""))} />
           <span className="truncate">{obj.owner}</span>
           <span className="shrink-0 text-gray-300 dark:text-gray-600">·</span>
           <span className="shrink-0">{deptLabel(obj.department)}</span>

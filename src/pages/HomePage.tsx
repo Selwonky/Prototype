@@ -7,7 +7,7 @@ import { ObjectCard } from "@/components/ObjectCard";
 import { StatusBadge } from "@/components/StatusBadge";
 import { deptIcon } from "@/lib/navigation";
 import { departments, workObjects, outputs } from "@/lib/prototype-data";
-import { useCommons } from "@/lib/store";
+import { useCommons } from "@/lib/use-commons";
 
 export function HomePage() {
   const { inbox, inboxState } = useCommons();

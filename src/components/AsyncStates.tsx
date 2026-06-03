@@ -55,7 +55,7 @@ export function ContractBadge({ meta }: { meta: SurfaceMeta }) {
     ? "bg-success-100 text-success-700 dark:bg-success-900/30 dark:text-success-400"
     : "bg-warning-100 text-warning-700 dark:bg-warning-900/30 dark:text-warning-400";
   return (
-    <span className={`inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-medium ${color}`}>
+    <span className={`inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-caption font-medium ${color}`}>
       {meta.source === "prototype" && <FlaskConical className="size-2.5" />}
       {label}
     </span>

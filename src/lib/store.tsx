@@ -7,29 +7,11 @@ import {
   outputs as seedOutputs,
   objectById,
   deptLabel,
-  type InboxItem,
   type ToolConn,
   type QueueAction,
   type OutputRecord,
 } from "./prototype-data";
-
-type InboxStatus = "pending" | "processing" | "approved" | "rejected" | "edited";
-
-interface CommonsState {
-  inbox: InboxItem[];
-  inboxState: Record<string, InboxStatus>;
-  rejectReasons: Record<string, string>;
-  edits: Record<string, string>;
-  toolState: Record<string, ToolConn["status"]>;
-  queue: QueueAction[];
-  recent: OutputRecord[];
-  approve: (id: string) => void;
-  reject: (id: string, reason: string) => void;
-  saveEdit: (id: string, text: string) => void;
-  toggleTool: (id: string) => void;
-}
-
-const Ctx = React.createContext<CommonsState | null>(null);
+import { CommonsContext, type CommonsState, type InboxStatus } from "./store-context";
 
 export function CommonsProvider({ children }: { children: React.ReactNode }) {
   const [inboxState, setInboxState] = React.useState<Record<string, InboxStatus>>(
@@ -119,11 +101,5 @@ export function CommonsProvider({ children }: { children: React.ReactNode }) {
     saveEdit,
     toggleTool,
   };
-  return <Ctx.Provider value={value}>{children}</Ctx.Provider>;
-}
-
-export function useCommons() {
-  const ctx = React.useContext(Ctx);
-  if (!ctx) throw new Error("useCommons must be used within CommonsProvider");
-  return ctx;
+  return <CommonsContext.Provider value={value}>{children}</CommonsContext.Provider>;
 }
