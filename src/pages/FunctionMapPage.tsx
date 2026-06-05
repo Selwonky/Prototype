@@ -5,15 +5,15 @@ import { PageHeader, Section } from "@/components/primitives";
 import { commonsOverview, joFunctions } from "@/lib/jo-functions";
 
 const functionCardSummary: Record<string, string> = {
-  sales: "Workspace for pipeline, outreach, and account movement.",
-  marketing: "Workspace for content, campaigns, and audience movement.",
-  workforce: "Workspace for hiring, onboarding, and team movement.",
-  finance: "Workspace for payments, budgets, and cash movement.",
-  technology: "Workspace for systems, tools, and delivery movement.",
-  support: "Workspace for tickets, replies, and service movement.",
-  accounting: "Workspace for invoices, ledgers, and close movement.",
-  operations: "Workspace for delivery, staffing, and process movement.",
-  legal: "Workspace for contracts, policies, and review movement.",
+  sales: "Turn pipeline signals into approved next steps.",
+  marketing: "Turn audience work into measurable demand.",
+  workforce: "Turn hiring needs into ready teams.",
+  finance: "Turn money movement into clear decisions.",
+  technology: "Turn systems work into reliable delivery.",
+  support: "Turn customer issues into resolved outcomes.",
+  accounting: "Turn records into reconciled close outputs.",
+  operations: "Turn plans into delivered client work.",
+  legal: "Turn review items into approved terms.",
 };
 
 export function FunctionMapPage() {
