@@ -29,7 +29,7 @@ export function ObjectCard({ obj }: { obj: WorkObject }) {
     obj.priority === "high" ? "High priority" : obj.priority === "medium" ? "Medium priority" : "Low priority";
 
   return (
-    <Card className="h-80 min-w-0 overflow-hidden transition-shadow hover:shadow-theme-md">
+    <Card className="grid h-80 min-w-0 grid-rows-[1fr_4.5rem] overflow-hidden transition-shadow hover:shadow-theme-md">
       <div className="min-h-0 flex-1 overflow-hidden">
         <CardHeader className="space-y-2">
           <div className="flex min-w-0 items-start gap-2">
@@ -67,7 +67,7 @@ export function ObjectCard({ obj }: { obj: WorkObject }) {
       )}
       </div>
 
-      <CardFooter className="gap-2 text-theme-sm text-gray-500 dark:text-gray-400">
+      <CardFooter className="h-full min-h-0 overflow-hidden gap-2 text-theme-sm text-gray-500 dark:text-gray-400">
         <div className="flex min-w-0 flex-1 items-center gap-2">
           <Avatar size="xs" fallback={getInitials(obj.owner.replace("Jo from ", ""))} />
           <span className="truncate">{obj.owner}</span>
