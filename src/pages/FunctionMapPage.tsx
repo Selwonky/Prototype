@@ -31,22 +31,22 @@ export function FunctionMapPage() {
 
       <GridPageShell columns={3} title="9 Jo from functions">
         {joFunctions.map((fn) => (
-          <Card className="grid grid-rows-[4fr_1fr] p-0" key={fn.id}>
+          <Card className="grid min-h-64 grid-rows-[1fr_auto] p-0" key={fn.id}>
             <div className="min-h-0">
               <CardHeader>
                 <div className="flex items-start justify-between gap-3">
                   <div className="min-w-0">
                     <CardTitle>{fn.name}</CardTitle>
-                    <CardDescription>{fn.summary}</CardDescription>
+                    <CardDescription className="line-clamp-2">{fn.summary}</CardDescription>
                   </div>
                   <Badge color="brand" size="sm" variant="outline">{fn.id}</Badge>
                 </div>
               </CardHeader>
               <CardContent className="flex flex-wrap gap-2">
-                {fn.objects.slice(0, 3).map((object) => <Badge color="neutral" key={object}>{object}</Badge>)}
+                {fn.objects.slice(0, 2).map((object) => <Badge color="neutral" key={object}>{object}</Badge>)}
               </CardContent>
             </div>
-            <div className="flex min-h-0 items-center border-t border-gray-200 p-5 dark:border-gray-800">
+            <div className="flex items-center border-t border-gray-200 p-4 dark:border-gray-800">
               <Link className="inline-flex h-10 w-full items-center justify-center rounded-lg border border-control-border bg-white px-4 py-2 text-theme-sm font-medium text-gray-700 transition-colors hover:bg-gray-50 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-brand-500/15 dark:bg-gray-900 dark:text-gray-200 dark:hover:bg-gray-800" to={`/functions/${fn.id}`}>
                 Open function page
               </Link>
