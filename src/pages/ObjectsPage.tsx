@@ -10,7 +10,7 @@ const typeTitle: Record<string, string> = {
 };
 
 const columns: { kinds: StatusKind[]; label: string; dotClassName: string }[] = [
-  { kinds: ["scheduled", "neutral"], label: "Queued", dotClassName: "bg-accent-500" },
+  { kinds: ["scheduled", "neutral"], label: "Queue", dotClassName: "bg-accent-500" },
   { kinds: ["in_progress"], label: "Active", dotClassName: "bg-brand-500" },
   { kinds: ["attention", "failed"], label: "Blocked", dotClassName: "bg-warning-500" },
   { kinds: ["done"], label: "Done", dotClassName: "bg-success-500" },

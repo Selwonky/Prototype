@@ -13,7 +13,7 @@ import {
 
 // Consistent across every department.
 const statusTabs = [
-  { value: "queued", label: "Queued" },
+  { value: "queued", label: "Queue" },
   { value: "active", label: "Active" },
   { value: "blocked", label: "Blocked" },
   { value: "done", label: "Done" },
