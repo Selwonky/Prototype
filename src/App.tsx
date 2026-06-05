@@ -20,6 +20,10 @@ const TemplateDetailPage = lazy(() => import("@/pages/TemplateDetailPage").then(
 const CommonsOverviewPage = lazy(() => import("@/pages/CommonsOverviewPage").then(m => ({ default: m.CommonsOverviewPage })));
 const FunctionMapPage = lazy(() => import("@/pages/FunctionMapPage").then(m => ({ default: m.FunctionMapPage })));
 const FunctionDetailPage = lazy(() => import("@/pages/FunctionDetailPage").then(m => ({ default: m.FunctionDetailPage })));
+const EmailPage = lazy(() => import("@/pages/EmailPage").then(m => ({ default: m.EmailPage })));
+const CalendarPage = lazy(() => import("@/pages/CalendarPage").then(m => ({ default: m.CalendarPage })));
+const TasksPage = lazy(() => import("@/pages/TasksPage").then(m => ({ default: m.TasksPage })));
+const NotesPage = lazy(() => import("@/pages/NotesPage").then(m => ({ default: m.NotesPage })));
 
 export default function App() {
   return (
@@ -37,6 +41,10 @@ export default function App() {
           <Route element={<CommonsShell />}>
             <Route path="/home" element={<HomePage />} />
             <Route path="/commons" element={<CommonsOverviewPage />} />
+            <Route path="/email" element={<EmailPage />} />
+            <Route path="/calendar" element={<CalendarPage />} />
+            <Route path="/tasks" element={<TasksPage />} />
+            <Route path="/notes" element={<NotesPage />} />
             <Route path="/functions" element={<FunctionMapPage />} />
             <Route path="/functions/:functionId" element={<FunctionDetailPage />} />
             <Route path="/inbox" element={<InboxPage />} />

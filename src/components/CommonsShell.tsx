@@ -7,8 +7,7 @@ import { Input } from "@jofrom/design-system/form";
 import { Button } from "@jofrom/design-system/ui";
 import { Avatar } from "@jofrom/design-system/ui";
 import { Badge } from "@jofrom/design-system/ui";
-import { Sheet, SheetContent, SheetTitle, SheetHeader, SheetDescription } from "@jofrom/design-system/ui";
-import { EmptyState } from "@jofrom/design-system/ui";
+import { Sheet, SheetContent, SheetTitle } from "@jofrom/design-system/ui";
 import { cn } from "@/lib/utils";
 import { useCommons } from "@/lib/use-commons";
 import { objectById, departments } from "@/lib/prototype-data";
@@ -109,17 +108,17 @@ function Sidebar({ collapsed, onToggle }: { collapsed: boolean; onToggle: () => 
 }
 
 const crumbLabels: Record<string, string> = {
-  home: "Home", inbox: "Inbox", queue: "Queue", recent: "Recent",
+  home: "Home", email: "Email", calendar: "Calendar", tasks: "Tasks", notes: "Notes", inbox: "Inbox", queue: "Queue", recent: "Recent",
   objects: "Objects", departments: "Departments", settings: "Settings",
   orgchart: "OrgChart", detail: "Object", tools: "Tools",
   security: "Security & Access", billing: "Billing", onboarding: "Onboarding",
 };
 
-const tools = [
-  { id: "email", label: "Email", Icon: Mail, description: "Drafts Jo from has prepared, sent threads, and inbox messages.", body: "Drafts and threads will appear here once Tools are connected." },
-  { id: "calendar", label: "Calendar", Icon: Calendar, description: "Meetings, kickoffs, and time blocks across your workspace.", body: "Your calendar will appear here once Tools are connected." },
-  { id: "tasks", label: "Tasks", Icon: ListChecks, description: "Your task list — assigned, due, and tracked across departments.", body: "Tasks will appear here once Tools are connected." },
-  { id: "notes", label: "Notes", Icon: StickyNote, description: "Quick captures, decisions, and reference notes.", body: "Your notes will appear here once Tools are connected." },
+const pageTabs = [
+  { to: "/email", label: "Email", Icon: Mail },
+  { to: "/calendar", label: "Calendar", Icon: Calendar },
+  { to: "/tasks", label: "Tasks", Icon: ListChecks },
+  { to: "/notes", label: "Notes", Icon: StickyNote },
 ] as const;
 
 function TopBarDivider() {
@@ -130,8 +129,6 @@ function TopBar({ onOpenMobile }: { onOpenMobile: () => void }) {
   const { pathname } = useLocation();
   const { theme, toggle } = useTheme();
   const parts = pathname.split("/").filter(Boolean);
-  const [openTool, setOpenTool] = React.useState<string | null>(null);
-  const activeTool = tools.find((t) => t.id === openTool);
   return (
     <header className="sticky top-0 z-20 flex h-14 items-center gap-3 border-b bg-background/80 px-4 backdrop-blur">
       <Button variant="ghost" size="icon" onClick={onOpenMobile} className="h-9 w-9 md:hidden" aria-label="Open menu">
@@ -157,53 +154,22 @@ function TopBar({ onOpenMobile }: { onOpenMobile: () => void }) {
       {/* Divider between page indicator and the consistent tools. */}
       <TopBarDivider />
 
-      {/* Consistent global tools: open as overlays — the page route stays
-          unchanged. Wide: words only. Narrow: icons only. */}
+      {/* Page tabs: Email, Calendar, Tasks, Notes. */}
       <div className="hidden items-center gap-1 md:flex">
-        {tools.map(({ id, label, Icon }) => {
-          const isActive = openTool === id;
-          return (
-            <button
-              key={id}
-              type="button"
-              aria-label={label}
-              title={label}
-              aria-pressed={isActive}
-              onClick={() => setOpenTool(isActive ? null : id)}
-              className={cn(
+        {pageTabs.map(({ to, label, Icon }) => (
+          <NavLink
+            key={to}
+            to={to}
+            className={({ isActive }) => cn(
                 "flex h-9 items-center gap-2 rounded-md px-3 text-sm transition-colors",
-                isActive
-                  ? "bg-accent font-medium text-foreground"
-                  : "text-muted-foreground hover:bg-accent hover:text-foreground"
-              )}
-            >
-              <Icon className="size-4 lg:hidden" />
-              <span className="hidden lg:inline">{label}</span>
-            </button>
-          );
-        })}
+                isActive ? "bg-accent font-medium text-foreground" : "text-muted-foreground hover:bg-accent hover:text-foreground"
+            )}
+          >
+            <Icon className="size-4 lg:hidden" />
+            <span className="hidden lg:inline">{label}</span>
+          </NavLink>
+        ))}
       </div>
-
-      {/* Tool overlay — the URL stays on the underlying page. */}
-      <Sheet open={!!activeTool} onOpenChange={(o) => !o && setOpenTool(null)}>
-        <SheetContent side="right" className="flex w-full flex-col sm:max-w-md">
-          {activeTool && (
-            <>
-              <SheetHeader>
-                <SheetTitle>{activeTool.label}</SheetTitle>
-                <SheetDescription>{activeTool.description}</SheetDescription>
-              </SheetHeader>
-              <div className="flex-1 overflow-y-auto p-4">
-                <EmptyState
-                  icon={<activeTool.Icon className="h-8 w-8" />}
-                  title={`${activeTool.label} is on the way.`}
-                  description={activeTool.body}
-                />
-              </div>
-            </>
-          )}
-        </SheetContent>
-      </Sheet>
 
       <div className="relative ml-auto hidden w-64 md:block">
         <Search className="pointer-events-none absolute left-2.5 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
