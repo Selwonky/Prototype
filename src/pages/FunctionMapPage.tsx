@@ -5,15 +5,15 @@ import { PageHeader, Section } from "@/components/primitives";
 import { commonsOverview, joFunctions } from "@/lib/jo-functions";
 
 const functionCardSummary: Record<string, string> = {
-  sales: "Turn pipeline signals into approved next steps.",
-  marketing: "Turn audience work into measurable demand.",
-  workforce: "Turn hiring needs into ready teams.",
-  finance: "Turn money movement into clear decisions.",
-  technology: "Turn systems work into reliable delivery.",
-  support: "Turn customer issues into resolved outcomes.",
-  accounting: "Turn records into reconciled close outputs.",
-  operations: "Turn plans into delivered client work.",
-  legal: "Turn review items into approved terms.",
+  sales: "Approved next steps from pipeline signals.",
+  marketing: "Measurable demand from audience work.",
+  workforce: "Ready teams from hiring needs.",
+  finance: "Clear decisions from money movement.",
+  technology: "Reliable delivery from systems work.",
+  support: "Resolved outcomes from customer issues.",
+  accounting: "Reconciled close outputs from records.",
+  operations: "Delivered client work from plans.",
+  legal: "Approved terms from review items.",
 };
 
 export function FunctionMapPage() {
@@ -46,12 +46,12 @@ export function FunctionMapPage() {
           <Card className="grid min-h-56 grid-rows-[1fr_auto] p-0" key={fn.id}>
             <div className="min-h-0">
               <CardHeader>
-                <div className="flex items-start justify-between gap-3">
-                  <div className="min-w-0">
+                <div className="space-y-3">
+                  <div className="flex items-center justify-between gap-3">
                     <CardTitle>{fn.name}</CardTitle>
-                    <CardDescription className="line-clamp-1">{functionCardSummary[fn.id]}</CardDescription>
+                    <Badge color="brand" size="sm" variant="outline">{fn.id}</Badge>
                   </div>
-                  <Badge color="brand" size="sm" variant="outline">{fn.id}</Badge>
+                  <CardDescription className="line-clamp-1">{functionCardSummary[fn.id]}</CardDescription>
                 </div>
               </CardHeader>
             </div>
