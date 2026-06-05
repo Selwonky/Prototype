@@ -29,6 +29,7 @@ export const navGroups: NavGroup[] = [
     items: [
       { label: "Home", to: "/home", icon: LayoutGrid },
       { label: "Commons", to: "/commons", icon: Waypoints },
+      { label: "Functions", to: "/functions", icon: Network },
       { label: "Inbox", to: "/inbox", icon: Inbox },
       { label: "Queue", to: "/queue", icon: Activity },
       { label: "Recent", to: "/recent", icon: History },
@@ -41,9 +42,8 @@ export const navGroups: NavGroup[] = [
     ],
   },
   {
-    label: "Functions",
+    label: "Departments",
     items: [
-      { label: "Overview", to: "/functions", icon: Network },
       { label: "Sales", to: "/departments/sales", icon: TrendingUp },
       { label: "Marketing", to: "/departments/marketing", icon: Megaphone },
       { label: "Workforce", to: "/departments/workforce", icon: Users },
