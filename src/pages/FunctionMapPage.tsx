@@ -46,7 +46,7 @@ export function FunctionMapPage() {
                 {fn.objects.slice(0, 3).map((object) => <Badge color="neutral" key={object}>{object}</Badge>)}
               </div>
               <Link className="inline-flex h-10 w-full items-center justify-center rounded-lg border border-control-border bg-white px-4 py-2 text-theme-sm font-medium text-gray-700 transition-colors hover:bg-gray-50 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-brand-500/15 dark:bg-gray-900 dark:text-gray-200 dark:hover:bg-gray-800" to={`/functions/${fn.id}`}>
-                Open function page
+                Open workspace
               </Link>
             </CardContent>
           </Card>

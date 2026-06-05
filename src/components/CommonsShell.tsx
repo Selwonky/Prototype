@@ -111,7 +111,7 @@ function Sidebar({ collapsed, onToggle }: { collapsed: boolean; onToggle: () => 
 
 const crumbLabels: Record<string, string> = {
   home: "Home", inbox: "Inbox", queue: "Queue", recent: "Recent",
-  objects: "Objects", departments: "Departments", settings: "Settings",
+  objects: "Objects", departments: "Departments", functions: "Functions", settings: "Settings",
   orgchart: "OrgChart", detail: "Object", tools: "Tools",
   security: "Security & Access", billing: "Billing", onboarding: "Onboarding",
 };
@@ -131,7 +131,7 @@ function TopBar({ onOpenMobile }: { onOpenMobile: () => void }) {
   const { pathname, search } = useLocation();
   const { theme, toggle } = useTheme();
   const parts = pathname.split("/").filter(Boolean);
-  const deptId = parts[0] === "departments" ? (parts[1] as DepartmentId | undefined) : undefined;
+  const deptId = parts[0] === "departments" || parts[0] === "functions" ? (parts[1] as DepartmentId | undefined) : undefined;
   const deptCats = deptId ? deptCategories[deptId] : undefined;
   const currentCat = new URLSearchParams(search).get("cat") ?? deptCats?.[0].value;
   const [openTool, setOpenTool] = React.useState<string | null>(null);
@@ -219,7 +219,7 @@ function TopBar({ onOpenMobile }: { onOpenMobile: () => void }) {
               return (
                 <Link
                   key={c.value}
-                  to={`/departments/${deptId}?cat=${c.value}`}
+                  to={`/${parts[0] === "functions" ? "functions" : "departments"}/${deptId}?cat=${c.value}`}
                   className={cn(
                     "shrink-0 rounded-md px-2 py-1 text-sm transition-colors",
                     active ? "font-medium text-foreground" : "text-muted-foreground hover:text-foreground"

@@ -20,11 +20,12 @@ const statusTabs = [
 ] as const;
 
 export function DepartmentPage() {
-  const { dept } = useParams<{ dept: string }>();
+  const { dept, functionId } = useParams<{ dept?: string; functionId?: string }>();
   const [searchParams] = useSearchParams();
-  const meta = departments.find((d) => d.id === dept);
-  const objs = objectsByDept(dept as DepartmentId);
-  const categories = deptCategories[dept as DepartmentId];
+  const workspaceId = functionId ?? dept;
+  const meta = departments.find((d) => d.id === workspaceId);
+  const objs = objectsByDept(workspaceId as DepartmentId);
+  const categories = deptCategories[workspaceId as DepartmentId];
   const categoryParam = searchParams.get("cat") ?? categories?.[0].value ?? "all";
 
   const [status, setStatus] = React.useState<string>("queued");
