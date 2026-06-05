@@ -9,18 +9,11 @@ const typeTitle: Record<string, string> = {
   action: "Actions", block: "Blocks",
 };
 
-const dotClass: Record<StatusKind, string> = {
-  attention: "bg-warning-500", in_progress: "bg-brand-500", scheduled: "bg-accent-500",
-  neutral: "bg-gray-400", done: "bg-success-500", failed: "bg-error-500",
-};
-
-// 5 columns, one row (a kanban).
-const columns: { kind: StatusKind; label: string }[] = [
-  { kind: "attention", label: "Needs you" },
-  { kind: "in_progress", label: "In progress" },
-  { kind: "scheduled", label: "Scheduled" },
-  { kind: "neutral", label: "Draft" },
-  { kind: "done", label: "Done" },
+const columns: { kinds: StatusKind[]; label: string; dotClassName: string }[] = [
+  { kinds: ["scheduled", "neutral"], label: "Queued", dotClassName: "bg-accent-500" },
+  { kinds: ["in_progress"], label: "Active", dotClassName: "bg-brand-500" },
+  { kinds: ["attention", "failed"], label: "Blocked", dotClassName: "bg-warning-500" },
+  { kinds: ["done"], label: "Done", dotClassName: "bg-success-500" },
 ];
 
 export function ObjectsPage() {
@@ -36,9 +29,9 @@ export function ObjectsPage() {
       />
       <div className="flex gap-4 overflow-x-auto pb-4">
         {columns.map((col) => {
-          const items = workObjects.filter((o) => o.statusKind === col.kind);
+          const items = workObjects.filter((o) => col.kinds.includes(o.statusKind));
           return (
-            <KanbanColumn key={col.kind} title={col.label} count={items.length} dotClassName={dotClass[col.kind]} className="flex-1">
+            <KanbanColumn key={col.label} title={col.label} count={items.length} dotClassName={col.dotClassName} className="flex-1">
               {items.map((o) => (
                 <KanbanCard
                   key={o.id}

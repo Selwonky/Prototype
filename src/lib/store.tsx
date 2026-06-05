@@ -52,7 +52,7 @@ export function CommonsProvider({ children }: { children: React.ReactNode }) {
           statusKind: "done",
           statusLabel: "Approved",
           timestamp: "Just now",
-          history: ["Needs approval", "Approved", "Compiled"],
+          history: ["Blocked", "Active", "Done"],
           summary: obj?.preview ?? "Approved and compiled.",
           sourceObjectId: item.objectId,
         },

@@ -13,8 +13,9 @@ import {
 
 // Consistent across every department.
 const statusTabs = [
+  { value: "queued", label: "Queued" },
   { value: "active", label: "Active" },
-  { value: "approvals", label: "Needs approval" },
+  { value: "blocked", label: "Blocked" },
   { value: "done", label: "Done" },
 ] as const;
 
@@ -26,7 +27,7 @@ export function DepartmentPage() {
   const categories = deptCategories[dept as DepartmentId];
   const categoryParam = searchParams.get("cat") ?? categories?.[0].value ?? "all";
 
-  const [status, setStatus] = React.useState<string>("active");
+  const [status, setStatus] = React.useState<string>("queued");
 
   if (!meta) {
     return <EmptyState icon={Boxes} title="Unknown department" description="This work area isn't part of the prototype yet." />;
@@ -37,7 +38,9 @@ export function DepartmentPage() {
     ? objs.filter((o) => activeCategory.types!.includes(o.type))
     : objs;
   const filtered: WorkObject[] =
-    status === "approvals" ? byCategory.filter((o) => o.statusKind === "attention")
+    status === "queued" ? byCategory.filter((o) => o.statusKind === "scheduled" || o.statusKind === "neutral")
+    : status === "active" ? byCategory.filter((o) => o.statusKind === "in_progress")
+    : status === "blocked" ? byCategory.filter((o) => o.statusKind === "attention" || o.statusKind === "failed")
     : status === "done" ? byCategory.filter((o) => o.statusKind === "done")
     : byCategory;
 
@@ -51,7 +54,7 @@ export function DepartmentPage() {
         actions={
           <>
             <Badge variant="light" color="neutral">{meta.activeCount} active</Badge>
-            {meta.needsApprovalCount > 0 && <Badge variant="light" color="warning">{meta.needsApprovalCount} approvals</Badge>}
+            {meta.needsApprovalCount > 0 && <Badge variant="light" color="warning">{meta.needsApprovalCount} blocked</Badge>}
           </>
         }
       />
