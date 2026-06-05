@@ -8,7 +8,7 @@ import { StatusBadge } from "@/components/StatusBadge";
 import { deptIcon } from "@/lib/navigation";
 import { departments, workObjects, outputs } from "@/lib/prototype-data";
 import { useCommons } from "@/lib/use-commons";
-import { departmentSurfaceStyle } from "@/lib/department-theme";
+import { departmentSurfaceStyle } from "@jofrom/design-system/data-display";
 
 export function HomePage() {
   const { inbox, inboxState } = useCommons();

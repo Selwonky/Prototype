@@ -3,7 +3,7 @@ import { Badge, Card, CardContent, CardDescription, CardHeader, CardTitle } from
 import { DetailPageShell, GridPageShell } from "@jofrom/design-system/shells";
 import { ButtonLink, Section } from "@/components/primitives";
 import { getJoFunction } from "@/lib/jo-functions";
-import { departmentBadgeStyle, departmentSurfaceStyle } from "@/lib/department-theme";
+import { departmentBadgeStyle, departmentSurfaceStyle } from "@jofrom/design-system/data-display";
 
 export function FunctionDetailPage() {
   const { functionId } = useParams();

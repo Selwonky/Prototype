@@ -3,7 +3,7 @@ import { Badge, Card, CardContent, CardDescription, CardHeader, CardTitle } from
 import { GridPageShell } from "@jofrom/design-system/shells";
 import { ButtonLink, PageHeader, Section } from "@/components/primitives";
 import { commonsOverview, joFunctions } from "@/lib/jo-functions";
-import { departmentRailStyle } from "@/lib/department-theme";
+import { departmentRailStyle } from "@jofrom/design-system/data-display";
 
 export function CommonsOverviewPage() {
   return (

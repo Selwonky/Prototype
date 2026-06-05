@@ -10,7 +10,7 @@ importers:
     dependencies:
       '@jofrom/design-system':
         specifier: git+https://github.com/Selwonky/jofrom-design-system.git
-        version: git+https://github.com/Selwonky/jofrom-design-system.git#2f94d0fb5502a708e80c6cbc0b588fc4c69cf15b(@floating-ui/dom@1.7.6)(@mantine/core@9.2.2(@mantine/hooks@9.2.2(react@19.2.6))(@types/react@19.2.15)(react-dom@19.2.6(react@19.2.6))(react@19.2.6))(@mantine/hooks@9.2.2(react@19.2.6))(@types/hast@3.0.4)(@types/react-dom@19.2.3(@types/react@19.2.15))(@types/react@19.2.15)(next@16.2.6(@babel/core@7.29.0)(react-dom@19.2.6(react@19.2.6))(react@19.2.6))(react-dom@19.2.6(react@19.2.6))(react-is@19.2.6)(react@19.2.6)(redux@5.0.1)(tailwindcss@4.3.0)
+        version: git+https://github.com/Selwonky/jofrom-design-system.git#9891069a220df775e5414e2f8fc6b577d357671a(@floating-ui/dom@1.7.6)(@mantine/core@9.2.2(@mantine/hooks@9.2.2(react@19.2.6))(@types/react@19.2.15)(react-dom@19.2.6(react@19.2.6))(react@19.2.6))(@mantine/hooks@9.2.2(react@19.2.6))(@types/hast@3.0.4)(@types/react-dom@19.2.3(@types/react@19.2.15))(@types/react@19.2.15)(next@16.2.6(@babel/core@7.29.0)(react-dom@19.2.6(react@19.2.6))(react@19.2.6))(react-dom@19.2.6(react@19.2.6))(react-is@19.2.6)(react@19.2.6)(redux@5.0.1)(tailwindcss@4.3.0)
       '@radix-ui/react-alert-dialog':
         specifier: ^1.1.15
         version: 1.1.15(@types/react-dom@19.2.3(@types/react@19.2.15))(@types/react@19.2.15)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
@@ -465,8 +465,8 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@jofrom/design-system@git+https://github.com/Selwonky/jofrom-design-system.git#2f94d0fb5502a708e80c6cbc0b588fc4c69cf15b':
-    resolution: {commit: 2f94d0fb5502a708e80c6cbc0b588fc4c69cf15b, repo: https://github.com/Selwonky/jofrom-design-system.git, type: git}
+  '@jofrom/design-system@git+https://github.com/Selwonky/jofrom-design-system.git#9891069a220df775e5414e2f8fc6b577d357671a':
+    resolution: {commit: 9891069a220df775e5414e2f8fc6b577d357671a, repo: https://github.com/Selwonky/jofrom-design-system.git, type: git}
     version: 0.0.0
     peerDependencies:
       next: '>=16 <17'
@@ -2506,6 +2506,11 @@ packages:
     engines: {node: '>=10'}
     hasBin: true
 
+  semver@7.8.2:
+    resolution: {integrity: sha512-c8jsqUZm3omBOI66G90z1Dyw5z622G8oLG+omfsHBJf3CWQTlOcwOjvOG6wtiNfW6anKm/eA39LMwMtMez2TiQ==}
+    engines: {node: '>=10'}
+    hasBin: true
+
   set-cookie-parser@2.7.2:
     resolution: {integrity: sha512-oeM1lpU/UvhTxw+g3cIfxXHyJRc/uidd3yK1P242gzHds0udQBYzs3y8j4gCCW+ZJ7ad0yctld8RYO+bdurlvw==}
 
@@ -3120,7 +3125,7 @@ snapshots:
   '@img/sharp-win32-x64@0.34.5':
     optional: true
 
-  '@jofrom/design-system@git+https://github.com/Selwonky/jofrom-design-system.git#2f94d0fb5502a708e80c6cbc0b588fc4c69cf15b(@floating-ui/dom@1.7.6)(@mantine/core@9.2.2(@mantine/hooks@9.2.2(react@19.2.6))(@types/react@19.2.15)(react-dom@19.2.6(react@19.2.6))(react@19.2.6))(@mantine/hooks@9.2.2(react@19.2.6))(@types/hast@3.0.4)(@types/react-dom@19.2.3(@types/react@19.2.15))(@types/react@19.2.15)(next@16.2.6(@babel/core@7.29.0)(react-dom@19.2.6(react@19.2.6))(react@19.2.6))(react-dom@19.2.6(react@19.2.6))(react-is@19.2.6)(react@19.2.6)(redux@5.0.1)(tailwindcss@4.3.0)':
+  '@jofrom/design-system@git+https://github.com/Selwonky/jofrom-design-system.git#9891069a220df775e5414e2f8fc6b577d357671a(@floating-ui/dom@1.7.6)(@mantine/core@9.2.2(@mantine/hooks@9.2.2(react@19.2.6))(@types/react@19.2.15)(react-dom@19.2.6(react@19.2.6))(react@19.2.6))(@mantine/hooks@9.2.2(react@19.2.6))(@types/hast@3.0.4)(@types/react-dom@19.2.3(@types/react@19.2.15))(@types/react@19.2.15)(next@16.2.6(@babel/core@7.29.0)(react-dom@19.2.6(react@19.2.6))(react@19.2.6))(react-dom@19.2.6(react@19.2.6))(react-is@19.2.6)(react@19.2.6)(redux@5.0.1)(tailwindcss@4.3.0)':
     dependencies:
       '@blocknote/core': 0.51.3(@types/hast@3.0.4)
       '@blocknote/mantine': 0.51.3(@floating-ui/dom@1.7.6)(@mantine/core@9.2.2(@mantine/hooks@9.2.2(react@19.2.6))(@types/react@19.2.15)(react-dom@19.2.6(react@19.2.6))(react@19.2.6))(@mantine/hooks@9.2.2(react@19.2.6))(@types/hast@3.0.4)(@types/react-dom@19.2.3(@types/react@19.2.15))(@types/react@19.2.15)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
@@ -5156,13 +5161,16 @@ snapshots:
 
   semver@7.8.1: {}
 
+  semver@7.8.2:
+    optional: true
+
   set-cookie-parser@2.7.2: {}
 
   sharp@0.34.5:
     dependencies:
       '@img/colour': 1.1.0
       detect-libc: 2.1.2
-      semver: 7.8.1
+      semver: 7.8.2
     optionalDependencies:
       '@img/sharp-darwin-arm64': 0.34.5
       '@img/sharp-darwin-x64': 0.34.5

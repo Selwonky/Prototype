@@ -8,10 +8,10 @@ import { Button } from "@jofrom/design-system/ui";
 import { Avatar } from "@jofrom/design-system/ui";
 import { Badge } from "@jofrom/design-system/ui";
 import { Sheet, SheetContent, SheetTitle } from "@jofrom/design-system/ui";
+import { DepartmentDot } from "@jofrom/design-system/data-display";
 import { cn } from "@/lib/utils";
 import { useCommons } from "@/lib/use-commons";
 import { objectById, departments } from "@/lib/prototype-data";
-import { departmentBackgroundStyle } from "@/lib/department-theme";
 
 function Logo({ compact }: { compact?: boolean }) {
   return (
@@ -61,7 +61,7 @@ function NavList({ collapsed, onNavigate }: { collapsed: boolean; onNavigate?: (
                     }
                   >
                     {departmentId ? (
-                      <span className="size-2.5 shrink-0 rounded-full" style={departmentBackgroundStyle(departmentId)} aria-hidden />
+                      <DepartmentDot department={departmentId} />
                     ) : collapsed ? (
                       <Icon className="size-4 shrink-0" aria-hidden />
                     ) : null}

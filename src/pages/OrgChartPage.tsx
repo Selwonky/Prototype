@@ -1,20 +1,18 @@
 import * as React from "react";
 import { BriefcaseBusiness, CircleDot, FileCheck2, GitBranch, MapPinned, Sparkles, Users } from "lucide-react";
 import { Badge, Card, CardContent, CardDescription, CardHeader, CardTitle, Separator } from "@jofrom/design-system/ui";
-import { PageHeader } from "@/components/primitives";
-import { orgChart, type OrgJob } from "@/lib/prototype-data";
-import { cn } from "@/lib/utils";
 import {
+  DEPARTMENTS,
   departmentBackgroundStyle,
   departmentChipStyle,
   departmentPanelStyle,
   departmentTextStyle,
-  getDepartmentTheme,
   lineStroke,
-  ownerBackgroundStyle,
-  ownerLineTheme,
   patternLabel,
-} from "@/lib/department-theme";
+} from "@jofrom/design-system/data-display";
+import { PageHeader } from "@/components/primitives";
+import { orgChart, type OrgJob } from "@/lib/prototype-data";
+import { cn } from "@/lib/utils";
 
 const levelColor = { IC: "neutral", "Team Lead": "brand", Manager: "warning", "Head of": "accent" } as const;
 
@@ -66,7 +64,7 @@ function DepartmentRoute({
   onSelectDepartment: () => void;
   onSelectJob: (job: OrgJob) => void;
 }) {
-  const line = getDepartmentTheme(department.id);
+  const line = DEPARTMENTS[department.id];
   const width = Math.max(720, 180 + department.jobs.length * 184);
   const y = line.pattern === "double" ? 38 : 42;
 
@@ -85,7 +83,7 @@ function DepartmentRoute({
             </span>
             <span>
               <span className="block text-sm font-semibold">{department.label}</span>
-              <span className="block text-xs text-muted-foreground">{line.lineName} · {line.colorName} · {patternLabel(line.pattern)}</span>
+              <span className="block text-xs text-muted-foreground">{line.line} · {line.colorName} · {patternLabel(line.pattern)}</span>
             </span>
           </button>
           <Badge variant="outline" color="neutral" size="sm">{department.jobs.length} stops</Badge>
@@ -110,7 +108,7 @@ function DepartmentRoute({
               <line x1="42" y1="78" x2={width - 42} y2="78" stroke="#6B7280" strokeWidth="3" strokeDasharray="7 7" opacity="0.45" />
             </svg>
             <div className="relative flex gap-6 pt-16">
-              <TransitStop color={ownerLineTheme.hex} label="Jeremy" meta="Outcome Owner" active={active && !selectedJob} onClick={onSelectDepartment} />
+              <TransitStop color={DEPARTMENTS.shared.hex} label="Jeremy" meta="Outcome Owner" active={active && !selectedJob} onClick={onSelectDepartment} />
               {department.jobs.map((job) => (
                 <TransitStop
                   key={job.id}
@@ -134,7 +132,7 @@ export function OrgChartPage() {
   const dept = orgChart.find((d) => d.id === deptId) ?? orgChart[0];
   const [job, setJob] = React.useState<OrgJob | null>(dept.jobs[0] ?? null);
   const [seed, setSeed] = React.useState(0);
-  const line = getDepartmentTheme(dept.id);
+  const line = DEPARTMENTS[dept.id];
 
   const selectDept = (id: typeof deptId) => {
     const nextDept = orgChart.find((d) => d.id === id) ?? orgChart[0];
@@ -165,12 +163,12 @@ export function OrgChartPage() {
         </div>
         <Card className="gap-0 p-4">
           <div className="flex items-center gap-3">
-            <span className="flex size-10 items-center justify-center rounded-xl text-white" style={ownerBackgroundStyle()}>
+            <span className="flex size-10 items-center justify-center rounded-xl text-white" style={departmentBackgroundStyle("shared")}>
               <Users className="size-5" />
             </span>
             <div>
               <p className="text-sm font-semibold">Jeremy</p>
-              <p className="text-xs text-muted-foreground">{ownerLineTheme.lineName} · Outcome Owner</p>
+              <p className="text-xs text-muted-foreground">{DEPARTMENTS.shared.line} · Outcome Owner</p>
             </div>
           </div>
         </Card>
@@ -200,7 +198,7 @@ export function OrgChartPage() {
                 <span className="size-3 rounded-full" style={departmentBackgroundStyle(dept.id)} />
                 {dept.label}
               </CardTitle>
-              <CardDescription>{line.lineName} · {line.colorName} · {line.hex}</CardDescription>
+              <CardDescription>{line.line} · {line.colorName} · {line.hex}</CardDescription>
             </CardHeader>
             <CardContent className="space-y-3">
               <div className="grid grid-cols-2 gap-2 text-xs">

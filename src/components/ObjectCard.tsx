@@ -9,7 +9,7 @@ import { StatusBadge } from "./StatusBadge";
 import { ButtonLink } from "./primitives";
 import { getInitials } from "@/lib/utils";
 import { deptLabel, type ObjectType, type WorkObject } from "@/lib/prototype-data";
-import { departmentSurfaceStyle } from "@/lib/department-theme";
+import { departmentSurfaceStyle } from "@jofrom/design-system/data-display";
 
 const typeGlyph: Partial<Record<ObjectType, LucideIcon>> = {
   workflow: Workflow, signal: Radio, engagement: Briefcase, task: CircleCheck,

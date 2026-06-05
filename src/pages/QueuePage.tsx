@@ -1,26 +1,20 @@
 import { Link } from "react-router-dom";
-import { Badge, Card } from "@jofrom/design-system/ui";
+import { Card } from "@jofrom/design-system/ui";
+import { WorkflowStatusBadge, type WorkflowStatus } from "@jofrom/design-system/data-display";
 import { PageHeader, Section } from "@/components/primitives";
 import { StatusBadge } from "@/components/StatusBadge";
 import {
-  actionStatusKind, actionStatusLabel, deptLabel, type DsBadgeColor,
+  actionStatusKind, actionStatusLabel, deptLabel,
   type ActionStatus,
 } from "@/lib/prototype-data";
 import { useCommons } from "@/lib/use-commons";
 
-const statusGroups: { label: "Queue" | "Active" | "Blocked" | "Done"; statuses: ActionStatus[] }[] = [
-  { label: "Queue", statuses: ["draft", "queued"] },
-  { label: "Active", statuses: ["running"] },
-  { label: "Blocked", statuses: ["needs_approval", "failed", "cancelled"] },
-  { label: "Done", statuses: ["completed"] },
+const statusGroups: { status: WorkflowStatus; statuses: ActionStatus[] }[] = [
+  { status: "queue", statuses: ["draft", "queued"] },
+  { status: "active", statuses: ["running"] },
+  { status: "blocked", statuses: ["needs_approval", "failed", "cancelled"] },
+  { status: "done", statuses: ["completed"] },
 ];
-
-const statusGroupColor: Record<(typeof statusGroups)[number]["label"], DsBadgeColor> = {
-  Queue: "warning",
-  Active: "success",
-  Blocked: "error",
-  Done: "neutral",
-};
 
 export function QueuePage() {
   const { queue } = useCommons();
@@ -34,7 +28,7 @@ export function QueuePage() {
       <div className="mb-6 flex flex-wrap gap-2">
         {statusGroups.map((group) => {
           const count = queue.filter((q) => group.statuses.includes(q.status)).length;
-          return <Badge key={group.label} color={statusGroupColor[group.label]} variant={group.label === "Done" ? "outline" : "light"}>{group.label} · {count}</Badge>;
+          return <WorkflowStatusBadge count={count} key={group.status} status={group.status} />;
         })}
       </div>
 

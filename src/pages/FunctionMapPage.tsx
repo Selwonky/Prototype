@@ -3,7 +3,7 @@ import { Badge, Card, CardContent, CardDescription, CardHeader, CardTitle } from
 import { GridPageShell } from "@jofrom/design-system/shells";
 import { PageHeader, Section } from "@/components/primitives";
 import { commonsOverview, joFunctions } from "@/lib/jo-functions";
-import { departmentSurfaceStyle } from "@/lib/department-theme";
+import { departmentSurfaceStyle } from "@jofrom/design-system/data-display";
 
 const functionCardSummary: Record<string, string> = {
   sales: "Approved next steps from pipeline signals.",
