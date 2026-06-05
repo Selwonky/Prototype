@@ -29,18 +29,19 @@ export function ObjectCard({ obj }: { obj: WorkObject }) {
     obj.priority === "high" ? "High priority" : obj.priority === "medium" ? "Medium priority" : "Low priority";
 
   return (
-    <Card className="min-w-0 transition-shadow hover:shadow-theme-md">
-      <CardHeader className="space-y-2">
-        <div className="flex min-w-0 items-start gap-2">
-          {obj.priority && (
-            <span className={`mt-1 size-2 shrink-0 rounded-full ${priorityDot}`} role="img" aria-label={priorityLabel} title={priorityLabel} />
-          )}
-          <Glyph className="mt-0.5 size-4 shrink-0 text-gray-400" aria-hidden />
-          <span className="min-w-0 flex-1 truncate text-base font-semibold text-gray-900 dark:text-white">{obj.title}</span>
-          <StatusBadge kind={obj.statusKind} label={obj.statusLabel} />
-        </div>
-        <p className="line-clamp-2 text-theme-sm text-gray-500 dark:text-gray-400">{obj.preview}</p>
-      </CardHeader>
+    <Card className="h-80 min-w-0 overflow-hidden transition-shadow hover:shadow-theme-md">
+      <div className="min-h-0 flex-1 overflow-hidden">
+        <CardHeader className="space-y-2">
+          <div className="flex min-w-0 items-start gap-2">
+            {obj.priority && (
+              <span className={`mt-1 size-2 shrink-0 rounded-full ${priorityDot}`} role="img" aria-label={priorityLabel} title={priorityLabel} />
+            )}
+            <Glyph className="mt-0.5 size-4 shrink-0 text-gray-400" aria-hidden />
+            <span className="min-w-0 flex-1 truncate text-base font-semibold text-gray-900 dark:text-white">{obj.title}</span>
+            <StatusBadge kind={obj.statusKind} label={obj.statusLabel} />
+          </div>
+          <p className="line-clamp-2 text-theme-sm text-gray-500 dark:text-gray-400">{obj.preview}</p>
+        </CardHeader>
 
       {(obj.meta?.length || obj.nextAction || obj.dueAt) && (
         <CardContent className="space-y-1.5 text-theme-sm">
@@ -64,6 +65,7 @@ export function ObjectCard({ obj }: { obj: WorkObject }) {
           )}
         </CardContent>
       )}
+      </div>
 
       <CardFooter className="gap-2 text-theme-sm text-gray-500 dark:text-gray-400">
         <div className="flex min-w-0 flex-1 items-center gap-2">
