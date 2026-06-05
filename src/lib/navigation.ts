@@ -34,6 +34,12 @@ export const navGroups: NavGroup[] = [
     ],
   },
   {
+    label: "Maestro",
+    items: [
+      { label: "OrgChart", to: "/orgchart", icon: Network },
+    ],
+  },
+  {
     label: "Departments",
     items: [
       { label: "Sales", to: "/departments/sales", icon: TrendingUp },
@@ -62,7 +68,6 @@ export const navGroups: NavGroup[] = [
   {
     label: "Settings",
     items: [
-      { label: "Maestro OrgChart", to: "/orgchart", icon: Network },
       {
         label: "Admin / Security & Access",
         to: "/settings/security",
