@@ -76,12 +76,14 @@ export function ButtonLink({
   variant = "default",
   size = "md",
   className,
+  style,
   children,
 }: {
   to: string;
   variant?: keyof typeof buttonVariants;
   size?: keyof typeof buttonSizes;
   className?: string;
+  style?: React.CSSProperties;
   children: React.ReactNode;
 }) {
   return (
@@ -93,6 +95,7 @@ export function ButtonLink({
         variant !== "link" && buttonSizes[size],
         className
       )}
+      style={style}
     >
       {children}
     </Link>

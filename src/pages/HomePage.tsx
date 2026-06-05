@@ -8,6 +8,7 @@ import { StatusBadge } from "@/components/StatusBadge";
 import { deptIcon } from "@/lib/navigation";
 import { departments, workObjects, outputs } from "@/lib/prototype-data";
 import { useCommons } from "@/lib/use-commons";
+import { departmentSurfaceStyle } from "@/lib/department-theme";
 
 export function HomePage() {
   const { inbox, inboxState } = useCommons();
@@ -80,7 +81,7 @@ export function HomePage() {
           {richDepts.map((d) => {
             const Icon = deptIcon[d.id];
             return (
-              <Card key={d.id} className="transition-shadow hover:shadow-theme-md">
+              <Card key={d.id} className="transition-shadow hover:shadow-theme-md" style={departmentSurfaceStyle(d.id)}>
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2 text-base">
                     <Icon className="size-4 text-gray-400" aria-hidden /> {d.label}

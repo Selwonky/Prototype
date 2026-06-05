@@ -22,7 +22,7 @@ export function TemplateDetailPage() {
             <Button>Add to</Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end" className="min-w-56">
-            <DropdownMenuLabel>Choose function workspace</DropdownMenuLabel>
+            <DropdownMenuLabel>Choose department workspace</DropdownMenuLabel>
             <DropdownMenuSeparator />
             {joFunctions.map((fn) => (
               <DropdownMenuItem key={fn.id} onSelect={() => navigate(`/departments/${fn.id}`)}>

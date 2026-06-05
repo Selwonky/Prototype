@@ -54,7 +54,7 @@ export const joFunctions: JoFunctionPage[] = [
     ormMeaning: "Models users, installed modules, corpus models, mail servers, tickets, deployments, and technical assets.",
     objects: ["User", "Module", "Corpus model", "Mail server", "Ticket", "Deployment", "Technical asset"],
     connectsTo: ["sales", "marketing", "support", "operations", "legal"],
-    interconnectivity: "Provides tool access, integrations, data models, and technical workflows that every function depends on.",
+    interconnectivity: "Provides tool access, integrations, data models, and technical workflows that every department depends on.",
   },
   {
     id: "support",
@@ -96,10 +96,10 @@ export const joFunctions: JoFunctionPage[] = [
 
 export const commonsOverview = {
   name: "The Commons",
-  summary: "The shared object workspace that connects all 9 Jo from functions through approvals, work objects, tools, outputs, tasks, notes, and activity.",
+  summary: "The shared object workspace that connects all 9 department workspaces through approvals, work objects, tools, outputs, tasks, notes, and activity.",
   ormMeaning: "Commons is the cross-functional object layer: every workflow, signal, job, task, action, block, output, inbox item, queue item, and tool connection is a reusable object with properties and relationships.",
   objects: ["Workflow", "Signal", "Job", "Task", "Action", "Block", "Note", "Output", "Inbox item", "Queue item", "Tool connection", "Calendar event"],
-  interconnectivity: "Commons makes work move across functions without losing context: objects keep their title, owner, status, department, relationships, actions, and history as they travel between Jo from functions.",
+  interconnectivity: "Commons makes work move across departments without losing context: objects keep their title, owner, status, department, relationships, actions, and history as they travel between Jo from departments.",
 };
 
 export function getJoFunction(id?: string) {

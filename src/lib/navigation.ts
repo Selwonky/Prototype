@@ -16,6 +16,7 @@ export interface NavLink {
   label: string;
   to: string;
   icon: LucideIcon;
+  departmentId?: DepartmentId;
   children?: NavLink[];
 }
 export interface NavGroup {
@@ -29,7 +30,7 @@ export const navGroups: NavGroup[] = [
     items: [
       { label: "Home", to: "/home", icon: LayoutGrid },
       { label: "Commons", to: "/commons", icon: Waypoints },
-      { label: "Functions", to: "/functions", icon: Network },
+      { label: "Workspace", to: "/functions", icon: Network },
       { label: "Inbox", to: "/inbox", icon: Inbox },
       { label: "Queue", to: "/queue", icon: Activity },
       { label: "Recent", to: "/recent", icon: History },
@@ -44,15 +45,15 @@ export const navGroups: NavGroup[] = [
   {
     label: "Departments",
     items: [
-      { label: "Sales", to: "/departments/sales", icon: TrendingUp },
-      { label: "Marketing", to: "/departments/marketing", icon: Megaphone },
-      { label: "Workforce", to: "/departments/workforce", icon: Users },
-      { label: "Finance", to: "/departments/finance", icon: Wallet },
-      { label: "Technology", to: "/departments/technology", icon: Server },
-      { label: "Support", to: "/departments/support", icon: LifeBuoy },
-      { label: "Accounting", to: "/departments/accounting", icon: Calculator },
-      { label: "Operations", to: "/departments/operations", icon: Ops },
-      { label: "Legal", to: "/departments/legal", icon: Scale },
+      { label: "Sales", to: "/departments/sales", icon: TrendingUp, departmentId: "sales" },
+      { label: "Marketing", to: "/departments/marketing", icon: Megaphone, departmentId: "marketing" },
+      { label: "Workforce", to: "/departments/workforce", icon: Users, departmentId: "workforce" },
+      { label: "Finance", to: "/departments/finance", icon: Wallet, departmentId: "finance" },
+      { label: "Technology", to: "/departments/technology", icon: Server, departmentId: "technology" },
+      { label: "Support", to: "/departments/support", icon: LifeBuoy, departmentId: "support" },
+      { label: "Accounting", to: "/departments/accounting", icon: Calculator, departmentId: "accounting" },
+      { label: "Operations", to: "/departments/operations", icon: Ops, departmentId: "operations" },
+      { label: "Legal", to: "/departments/legal", icon: Scale, departmentId: "legal" },
     ],
   },
   {

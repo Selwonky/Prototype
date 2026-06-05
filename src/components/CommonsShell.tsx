@@ -11,6 +11,7 @@ import { Sheet, SheetContent, SheetTitle } from "@jofrom/design-system/ui";
 import { cn } from "@/lib/utils";
 import { useCommons } from "@/lib/use-commons";
 import { objectById, departments } from "@/lib/prototype-data";
+import { departmentBackgroundStyle } from "@/lib/department-theme";
 
 function Logo({ compact }: { compact?: boolean }) {
   return (
@@ -35,7 +36,7 @@ function NavList({ collapsed, onNavigate }: { collapsed: boolean; onNavigate?: (
       {navGroups.map((group) => (
         <div key={group.label}>
           {!collapsed && (
-            <p className="px-3 pb-1.5 text-caption font-medium uppercase tracking-wider text-sidebar-foreground/40">
+            <p className="sidebar-section-heading px-3 pb-1.5 text-caption uppercase tracking-wider text-sidebar-foreground/40">
               {group.label}
             </p>
           )}
@@ -43,6 +44,7 @@ function NavList({ collapsed, onNavigate }: { collapsed: boolean; onNavigate?: (
             {group.items.map((item) => {
               const Icon = item.icon;
               const badge = item.to === "/inbox" && pendingInbox > 0 ? pendingInbox : null;
+              const departmentId = item.departmentId;
               return (
                 <li key={item.to}>
                   <NavLink
@@ -58,7 +60,11 @@ function NavList({ collapsed, onNavigate }: { collapsed: boolean; onNavigate?: (
                       )
                     }
                   >
-                    <Icon className="size-4 shrink-0" aria-hidden />
+                    {departmentId ? (
+                      <span className="size-2.5 shrink-0 rounded-full" style={departmentBackgroundStyle(departmentId)} aria-hidden />
+                    ) : collapsed ? (
+                      <Icon className="size-4 shrink-0" aria-hidden />
+                    ) : null}
                     {!collapsed && <span className="truncate">{item.label}</span>}
                     {!collapsed && badge && (
                       <Badge variant="solid" color="brand" size="sm" className="ml-auto">{badge}</Badge>

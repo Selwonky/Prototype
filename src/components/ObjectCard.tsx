@@ -9,6 +9,7 @@ import { StatusBadge } from "./StatusBadge";
 import { ButtonLink } from "./primitives";
 import { getInitials } from "@/lib/utils";
 import { deptLabel, type ObjectType, type WorkObject } from "@/lib/prototype-data";
+import { departmentSurfaceStyle } from "@/lib/department-theme";
 
 const typeGlyph: Partial<Record<ObjectType, LucideIcon>> = {
   workflow: Workflow, signal: Radio, engagement: Briefcase, task: CircleCheck,
@@ -29,7 +30,7 @@ export function ObjectCard({ obj }: { obj: WorkObject }) {
     obj.priority === "high" ? "High priority" : obj.priority === "medium" ? "Medium priority" : "Low priority";
 
   return (
-    <Card className="grid h-80 min-w-0 grid-rows-[1fr_4.5rem] overflow-hidden transition-shadow hover:shadow-theme-md">
+    <Card className="grid h-80 min-w-0 grid-rows-[1fr_4.5rem] overflow-hidden transition-shadow hover:shadow-theme-md" style={departmentSurfaceStyle(obj.department)}>
       <div className="min-h-0 flex-1 overflow-hidden">
         <CardHeader className="space-y-2">
           <div className="flex min-w-0 items-start gap-2">

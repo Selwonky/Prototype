@@ -61,6 +61,26 @@
 :root { --info: 199 89% 48%; }
 .dark { --info: 199 89% 48%; }
 
+/* Prototype rule: all component corner radii use a 4px system radius. */
+:root {
+  --app-radius: 4px;
+  --radius: var(--app-radius);
+  --radius-sm: var(--app-radius);
+  --radius-md: var(--app-radius);
+  --radius-lg: var(--app-radius);
+  --radius-xl: var(--app-radius);
+  --radius-2xl: var(--app-radius);
+  --radius-3xl: var(--app-radius);
+}
+
+[class*="rounded"] {
+  border-radius: var(--app-radius) !important;
+}
+
+.sidebar-section-heading {
+  font-weight: 700;
+}
+
 /* Surface scale uses the design-system defaults — standard shadcn/slate:
    - Light mode: pure white canvas, subtle off-white side nav.
    - Dark  mode: deep slate canvas, slightly darker side nav.
