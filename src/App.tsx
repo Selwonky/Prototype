@@ -17,6 +17,9 @@ const OrgChartPage = lazy(() => import("@/pages/OrgChartPage").then(m => ({ defa
 const SettingsPage = lazy(() => import("@/pages/SettingsPage").then(m => ({ default: m.SettingsPage })));
 const TemplatesPage = lazy(() => import("@/pages/TemplatesPage").then(m => ({ default: m.TemplatesPage })));
 const TemplateDetailPage = lazy(() => import("@/pages/TemplateDetailPage").then(m => ({ default: m.TemplateDetailPage })));
+const CommonsOverviewPage = lazy(() => import("@/pages/CommonsOverviewPage").then(m => ({ default: m.CommonsOverviewPage })));
+const FunctionMapPage = lazy(() => import("@/pages/FunctionMapPage").then(m => ({ default: m.FunctionMapPage })));
+const FunctionDetailPage = lazy(() => import("@/pages/FunctionDetailPage").then(m => ({ default: m.FunctionDetailPage })));
 
 export default function App() {
   return (
@@ -33,6 +36,9 @@ export default function App() {
           {/* Every workspace page lives at /{page} under the Commons shell. */}
           <Route element={<CommonsShell />}>
             <Route path="/home" element={<HomePage />} />
+            <Route path="/commons" element={<CommonsOverviewPage />} />
+            <Route path="/functions" element={<FunctionMapPage />} />
+            <Route path="/functions/:functionId" element={<FunctionDetailPage />} />
             <Route path="/inbox" element={<InboxPage />} />
             <Route path="/queue" element={<QueuePage />} />
             <Route path="/recent" element={<RecentPage />} />

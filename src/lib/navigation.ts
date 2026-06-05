@@ -1,7 +1,7 @@
 import {
   LayoutGrid, Inbox, Activity, History, Workflow, Radio, Briefcase, CircleCheck,
   Zap, Boxes, Megaphone, Users, Wallet, Server, LifeBuoy, Calculator, Workflow as Ops,
-  Scale, Shield, Plug, CreditCard, Compass, TrendingUp, Network, FlaskConical, PanelsTopLeft,
+  Scale, Shield, Plug, CreditCard, Compass, TrendingUp, Network, FlaskConical, PanelsTopLeft, Waypoints,
   type LucideIcon,
 } from "lucide-react";
 import type { DepartmentId, ObjectType } from "./prototype-data";
@@ -28,6 +28,8 @@ export const navGroups: NavGroup[] = [
     label: "Start",
     items: [
       { label: "Home", to: "/home", icon: LayoutGrid },
+      { label: "Commons", to: "/commons", icon: Waypoints },
+      { label: "Functions", to: "/functions", icon: Network },
       { label: "Inbox", to: "/inbox", icon: Inbox },
       { label: "Queue", to: "/queue", icon: Activity },
       { label: "Recent", to: "/recent", icon: History },
