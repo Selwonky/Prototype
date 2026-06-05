@@ -5,7 +5,7 @@ import { Badge } from "@jofrom/design-system/ui";
 import { FilterTabs } from "@jofrom/design-system/data-display";
 import { PageHeader, EmptyState, ButtonLink } from "@/components/primitives";
 import { ObjectCard } from "@/components/ObjectCard";
-import { deptIcon, workspaceFolders } from "@/lib/navigation";
+import { deptIcon, deptCategories } from "@/lib/navigation";
 import {
   departments, objectsByDept,
   type DepartmentId, type WorkObject,
@@ -24,8 +24,8 @@ export function DepartmentPage() {
   const [searchParams] = useSearchParams();
   const meta = departments.find((d) => d.id === dept);
   const objs = objectsByDept(dept as DepartmentId);
-  const folders = workspaceFolders[dept as DepartmentId];
-  const folderParam = searchParams.get("cat") ?? folders?.[0].value ?? "all";
+  const categories = deptCategories[dept as DepartmentId];
+  const categoryParam = searchParams.get("cat") ?? categories?.[0].value ?? "all";
 
   const [status, setStatus] = React.useState<string>("queued");
 
@@ -33,16 +33,16 @@ export function DepartmentPage() {
     return <EmptyState icon={Boxes} title="Unknown department" description="This work area isn't part of the prototype yet." />;
   }
 
-  const activeFolder = folders?.find((folder) => folder.value === folderParam);
-  const byFolder = activeFolder?.types
-    ? objs.filter((o) => activeFolder.types!.includes(o.type))
+  const activeCategory = categories?.find((c) => c.value === categoryParam);
+  const byCategory = activeCategory?.types
+    ? objs.filter((o) => activeCategory.types!.includes(o.type))
     : objs;
   const filtered: WorkObject[] =
-    status === "queued" ? byFolder.filter((o) => o.statusKind === "scheduled" || o.statusKind === "neutral")
-    : status === "active" ? byFolder.filter((o) => o.statusKind === "in_progress")
-    : status === "blocked" ? byFolder.filter((o) => o.statusKind === "attention" || o.statusKind === "failed")
-    : status === "done" ? byFolder.filter((o) => o.statusKind === "done")
-    : byFolder;
+    status === "queued" ? byCategory.filter((o) => o.statusKind === "scheduled" || o.statusKind === "neutral")
+    : status === "active" ? byCategory.filter((o) => o.statusKind === "in_progress")
+    : status === "blocked" ? byCategory.filter((o) => o.statusKind === "attention" || o.statusKind === "failed")
+    : status === "done" ? byCategory.filter((o) => o.statusKind === "done")
+    : byCategory;
 
   const Icon = deptIcon[meta.id];
 
@@ -59,7 +59,8 @@ export function DepartmentPage() {
         }
       />
 
-      {/* Consistent status tabs. Workspace folders live in the topbar header. */}
+      {/* Consistent status tabs (every department). Dept-specific category
+          tabs live in the topbar header now. */}
       <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
         <FilterTabs
           tabs={statusTabs.map((t) => ({ label: t.label, value: t.value }))}
