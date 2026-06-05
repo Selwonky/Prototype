@@ -64,12 +64,12 @@ export const navGroups: NavGroup[] = [
       { label: "Tasks", to: "/objects/task", icon: CircleCheck },
       { label: "Actions", to: "/objects/action", icon: Zap },
       { label: "Blocks", to: "/objects/block", icon: Boxes },
-      { label: "Templates", to: "/templates", icon: PanelsTopLeft },
     ],
   },
   {
     label: "Settings",
     items: [
+      { label: "Templates", to: "/templates", icon: PanelsTopLeft },
       {
         label: "Admin / Security & Access",
         to: "/settings/security",
