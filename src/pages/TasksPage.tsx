@@ -12,6 +12,12 @@ const tasks = [
   { title: "Update delivery plan", owner: "Technology", due: "Friday", status: "Active" },
 ] as const;
 
+const taskFeed = Array.from({ length: 8 }, (_, group) => tasks.map((task, index) => ({
+  ...task,
+  title: `${task.title} #${group + 1}.${index + 1}`,
+  due: group === 0 ? task.due : `${group + index + 1}d`,
+}))).flat();
+
 const statuses = ["All", "Queue", "Active", "Blocked", "Done"] as const;
 
 function tone(status: string) {
@@ -21,7 +27,7 @@ function tone(status: string) {
 export function TasksPage() {
   const [view, setView] = React.useState<"list" | "kanban">("list");
   const [filter, setFilter] = React.useState<(typeof statuses)[number]>("All");
-  const filtered = filter === "All" ? tasks : tasks.filter((task) => task.status === filter);
+  const filtered = filter === "All" ? taskFeed : taskFeed.filter((task) => task.status === filter);
 
   return (
     <>
@@ -54,8 +60,8 @@ export function TasksPage() {
           <div className="grid grid-cols-1 gap-4 lg:grid-cols-4">
             {statuses.filter((status) => status !== "All").map((status) => (
               <Card className="p-4" key={status}>
-                <div className="mb-4 flex items-center justify-between gap-3"><p className="text-theme-sm font-medium text-gray-900 dark:text-white">{status}</p><Badge color={tone(status)}>{tasks.filter((task) => task.status === status).length}</Badge></div>
-                <div className="space-y-3">{tasks.filter((task) => task.status === status).map((task) => <Card className="border-dashed p-3" key={task.title}><CardContent className="flex items-center gap-3 p-0"><CheckCircle2 className="size-4 shrink-0 text-gray-400" /><span className="text-theme-sm text-gray-700 dark:text-gray-300">{task.title}</span></CardContent></Card>)}</div>
+                <div className="mb-4 flex items-center justify-between gap-3"><p className="text-theme-sm font-medium text-gray-900 dark:text-white">{status}</p><Badge color={tone(status)}>{taskFeed.filter((task) => task.status === status).length}</Badge></div>
+                <div className="space-y-3">{taskFeed.filter((task) => task.status === status).map((task) => <Card className="border-dashed p-3" key={task.title}><CardContent className="flex items-center gap-3 p-0"><CheckCircle2 className="size-4 shrink-0 text-gray-400" /><span className="text-theme-sm text-gray-700 dark:text-gray-300">{task.title}</span></CardContent></Card>)}</div>
               </Card>
             ))}
           </div>

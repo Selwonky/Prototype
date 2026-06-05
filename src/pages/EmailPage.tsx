@@ -10,6 +10,12 @@ const threads = [
   { from: "Priya Shah", company: "Midwest SMB Alliance", subject: "Referral intro", time: "Fri", status: "Done", unread: false, body: "Intro reply was sent and the next check-in is scheduled. Notes are attached to the account timeline.", attachments: 0 },
 ];
 
+const inboxThreads = Array.from({ length: 12 }, (_, group) => threads.map((thread, index) => ({
+  ...thread,
+  subject: `${thread.subject} #${group + 1}.${index + 1}`,
+  time: group === 0 ? thread.time : `${group + 1}d ago`,
+}))).flat();
+
 export function EmailPage() {
   const selected = threads[0];
 
@@ -23,7 +29,7 @@ export function EmailPage() {
             {folders.map((folder, index) => (
               <button className={`flex w-full items-center justify-between rounded-lg px-3 py-2 text-left text-theme-sm ${index === 0 ? "bg-brand-50 font-medium text-brand-700 dark:bg-brand-500/15 dark:text-brand-400" : "text-gray-600 hover:bg-gray-50 dark:text-gray-300 dark:hover:bg-white/5"}`} key={folder} type="button">
                 <span>{folder}</span>
-                {index === 0 ? <Badge color="brand" size="sm">{threads.length}</Badge> : null}
+                {index === 0 ? <Badge color="brand" size="sm">{inboxThreads.length}</Badge> : null}
               </button>
             ))}
           </nav>
@@ -37,7 +43,7 @@ export function EmailPage() {
             </div>
           </div>
           <div className="divide-y divide-gray-100 dark:divide-gray-800">
-            {threads.map((thread, index) => (
+            {inboxThreads.map((thread, index) => (
               <button className={`w-full p-4 text-left transition-colors ${index === 0 ? "bg-gray-50 dark:bg-white/5" : "hover:bg-gray-50 dark:hover:bg-white/5"}`} key={thread.subject} type="button">
                 <div className="flex items-start justify-between gap-3">
                   <div className="min-w-0">
