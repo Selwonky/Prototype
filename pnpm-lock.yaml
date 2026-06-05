@@ -10,7 +10,7 @@ importers:
     dependencies:
       '@jofrom/design-system':
         specifier: git+https://github.com/Selwonky/jofrom-design-system.git
-        version: git+https://github.com/Selwonky/jofrom-design-system.git#f2e420857ab7eae8c306b4c369799818ddbcfd98(@floating-ui/dom@1.7.6)(@mantine/core@9.2.2(@mantine/hooks@9.2.2(react@19.2.6))(@types/react@19.2.15)(react-dom@19.2.6(react@19.2.6))(react@19.2.6))(@mantine/hooks@9.2.2(react@19.2.6))(@types/hast@3.0.4)(@types/react-dom@19.2.3(@types/react@19.2.15))(@types/react@19.2.15)(next@16.2.6(@babel/core@7.29.0)(react-dom@19.2.6(react@19.2.6))(react@19.2.6))(react-dom@19.2.6(react@19.2.6))(react-is@19.2.6)(react@19.2.6)(redux@5.0.1)(tailwindcss@4.3.0)
+        version: git+https://github.com/Selwonky/jofrom-design-system.git#64c0a01a0aae51d40a4ca507ac6405d4805eb596(@floating-ui/dom@1.7.6)(@mantine/core@9.2.2(@mantine/hooks@9.2.2(react@19.2.6))(@types/react@19.2.15)(react-dom@19.2.6(react@19.2.6))(react@19.2.6))(@mantine/hooks@9.2.2(react@19.2.6))(@types/hast@3.0.4)(@types/react-dom@19.2.3(@types/react@19.2.15))(@types/react@19.2.15)(next@16.2.6(@babel/core@7.29.0)(react-dom@19.2.6(react@19.2.6))(react@19.2.6))(react-dom@19.2.6(react@19.2.6))(react-is@19.2.6)(react@19.2.6)(redux@5.0.1)(tailwindcss@4.3.0)
       '@radix-ui/react-alert-dialog':
         specifier: ^1.1.15
         version: 1.1.15(@types/react-dom@19.2.3(@types/react@19.2.15))(@types/react@19.2.15)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
@@ -465,8 +465,8 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@jofrom/design-system@git+https://github.com/Selwonky/jofrom-design-system.git#f2e420857ab7eae8c306b4c369799818ddbcfd98':
-    resolution: {commit: f2e420857ab7eae8c306b4c369799818ddbcfd98, repo: https://github.com/Selwonky/jofrom-design-system.git, type: git}
+  '@jofrom/design-system@git+https://github.com/Selwonky/jofrom-design-system.git#64c0a01a0aae51d40a4ca507ac6405d4805eb596':
+    resolution: {commit: 64c0a01a0aae51d40a4ca507ac6405d4805eb596, repo: https://github.com/Selwonky/jofrom-design-system.git, type: git}
     version: 0.0.0
     peerDependencies:
       next: '>=16 <17'
@@ -3120,7 +3120,7 @@ snapshots:
   '@img/sharp-win32-x64@0.34.5':
     optional: true
 
-  '@jofrom/design-system@git+https://github.com/Selwonky/jofrom-design-system.git#f2e420857ab7eae8c306b4c369799818ddbcfd98(@floating-ui/dom@1.7.6)(@mantine/core@9.2.2(@mantine/hooks@9.2.2(react@19.2.6))(@types/react@19.2.15)(react-dom@19.2.6(react@19.2.6))(react@19.2.6))(@mantine/hooks@9.2.2(react@19.2.6))(@types/hast@3.0.4)(@types/react-dom@19.2.3(@types/react@19.2.15))(@types/react@19.2.15)(next@16.2.6(@babel/core@7.29.0)(react-dom@19.2.6(react@19.2.6))(react@19.2.6))(react-dom@19.2.6(react@19.2.6))(react-is@19.2.6)(react@19.2.6)(redux@5.0.1)(tailwindcss@4.3.0)':
+  '@jofrom/design-system@git+https://github.com/Selwonky/jofrom-design-system.git#64c0a01a0aae51d40a4ca507ac6405d4805eb596(@floating-ui/dom@1.7.6)(@mantine/core@9.2.2(@mantine/hooks@9.2.2(react@19.2.6))(@types/react@19.2.15)(react-dom@19.2.6(react@19.2.6))(react@19.2.6))(@mantine/hooks@9.2.2(react@19.2.6))(@types/hast@3.0.4)(@types/react-dom@19.2.3(@types/react@19.2.15))(@types/react@19.2.15)(next@16.2.6(@babel/core@7.29.0)(react-dom@19.2.6(react@19.2.6))(react@19.2.6))(react-dom@19.2.6(react@19.2.6))(react-is@19.2.6)(react@19.2.6)(redux@5.0.1)(tailwindcss@4.3.0)':
     dependencies:
       '@blocknote/core': 0.51.3(@types/hast@3.0.4)
       '@blocknote/mantine': 0.51.3(@floating-ui/dom@1.7.6)(@mantine/core@9.2.2(@mantine/hooks@9.2.2(react@19.2.6))(@types/react@19.2.15)(react-dom@19.2.6(react@19.2.6))(react@19.2.6))(@mantine/hooks@9.2.2(react@19.2.6))(@types/hast@3.0.4)(@types/react-dom@19.2.3(@types/react@19.2.15))(@types/react@19.2.15)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
