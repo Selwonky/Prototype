@@ -6,7 +6,7 @@ import {
 } from "lucide-react";
 import type { DepartmentId, ObjectType } from "./prototype-data";
 
-export interface DeptCategory {
+export interface WorkspaceFolder {
   value: string;
   label: string;
   types?: ObjectType[];
@@ -85,7 +85,7 @@ export const navGroups: NavGroup[] = [
   },
 ];
 
-export const deptCategories: Record<DepartmentId, DeptCategory[]> = {
+export const workspaceFolders: Record<DepartmentId, WorkspaceFolder[]> = {
   sales: [
     { value: "all", label: "All" },
     { value: "pipeline", label: "Pipeline", types: ["prospect", "research_brief", "outreach_draft", "proposal", "status_report"] },
@@ -128,6 +128,8 @@ export const deptCategories: Record<DepartmentId, DeptCategory[]> = {
     { value: "all", label: "All" },
   ],
 };
+
+export const deptCategories = workspaceFolders;
 
 export const deptIcon: Record<DepartmentId, LucideIcon> = {
   sales: TrendingUp, marketing: Megaphone, workforce: Users, finance: Wallet,

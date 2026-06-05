@@ -2,7 +2,7 @@ import * as React from "react";
 import { Link, NavLink, useLocation, Outlet } from "react-router-dom";
 import { Search, Bell, PanelLeftClose, PanelLeft, Menu, Sun, Moon, Mail, Calendar, ListChecks, StickyNote } from "lucide-react";
 import { useTheme } from "@/lib/theme";
-import { navGroups, deptCategories } from "@/lib/navigation";
+import { navGroups, workspaceFolders } from "@/lib/navigation";
 import type { DepartmentId } from "@/lib/prototype-data";
 import { Input } from "@jofrom/design-system/form";
 import { Button } from "@jofrom/design-system/ui";
@@ -116,7 +116,7 @@ const crumbLabels: Record<string, string> = {
   security: "Security & Access", billing: "Billing", onboarding: "Onboarding",
 };
 
-const tools = [
+const pageTabs = [
   { id: "email", label: "Email", Icon: Mail, description: "Drafts Jo from has prepared, sent threads, and inbox messages.", body: "Drafts and threads will appear here once Tools are connected." },
   { id: "calendar", label: "Calendar", Icon: Calendar, description: "Meetings, kickoffs, and time blocks across your workspace.", body: "Your calendar will appear here once Tools are connected." },
   { id: "tasks", label: "Tasks", Icon: ListChecks, description: "Your task list — assigned, due, and tracked across departments.", body: "Tasks will appear here once Tools are connected." },
@@ -132,10 +132,10 @@ function TopBar({ onOpenMobile }: { onOpenMobile: () => void }) {
   const { theme, toggle } = useTheme();
   const parts = pathname.split("/").filter(Boolean);
   const deptId = parts[0] === "departments" ? (parts[1] as DepartmentId | undefined) : undefined;
-  const deptCats = deptId ? deptCategories[deptId] : undefined;
-  const currentCat = new URLSearchParams(search).get("cat") ?? deptCats?.[0].value;
-  const [openTool, setOpenTool] = React.useState<string | null>(null);
-  const activeTool = tools.find((t) => t.id === openTool);
+  const folders = deptId ? workspaceFolders[deptId] : undefined;
+  const currentFolder = new URLSearchParams(search).get("cat") ?? folders?.[0].value;
+  const [openPageId, setOpenPageId] = React.useState<string | null>(null);
+  const activePage = pageTabs.find((tab) => tab.id === openPageId);
   return (
     <header className="sticky top-0 z-20 flex h-14 items-center gap-3 border-b bg-background/80 px-4 backdrop-blur">
       <Button variant="ghost" size="icon" onClick={onOpenMobile} className="h-9 w-9 md:hidden" aria-label="Open menu">
@@ -161,11 +161,10 @@ function TopBar({ onOpenMobile }: { onOpenMobile: () => void }) {
       {/* Divider between page indicator and the consistent tools. */}
       <TopBarDivider />
 
-      {/* Consistent global tools: open as overlays — the page route stays
-          unchanged. Wide: words only. Narrow: icons only. */}
+      {/* Heading tabs represent page ids: email, calendar, tasks, notes. */}
       <div className="hidden items-center gap-1 md:flex">
-        {tools.map(({ id, label, Icon }) => {
-          const isActive = openTool === id;
+        {pageTabs.map(({ id, label, Icon }) => {
+          const isActive = openPageId === id;
           return (
             <button
               key={id}
@@ -173,7 +172,7 @@ function TopBar({ onOpenMobile }: { onOpenMobile: () => void }) {
               aria-label={label}
               title={label}
               aria-pressed={isActive}
-              onClick={() => setOpenTool(isActive ? null : id)}
+              onClick={() => setOpenPageId(isActive ? null : id)}
               className={cn(
                 "flex h-9 items-center gap-2 rounded-md px-3 text-sm transition-colors",
                 isActive
@@ -188,20 +187,20 @@ function TopBar({ onOpenMobile }: { onOpenMobile: () => void }) {
         })}
       </div>
 
-      {/* Tool overlay — the URL stays on the underlying page. */}
-      <Sheet open={!!activeTool} onOpenChange={(o) => !o && setOpenTool(null)}>
+      {/* Page-id overlay — the URL stays on the underlying workspace page. */}
+      <Sheet open={!!activePage} onOpenChange={(o) => !o && setOpenPageId(null)}>
         <SheetContent side="right" className="flex w-full flex-col sm:max-w-md">
-          {activeTool && (
+          {activePage && (
             <>
               <SheetHeader>
-                <SheetTitle>{activeTool.label}</SheetTitle>
-                <SheetDescription>{activeTool.description}</SheetDescription>
+                <SheetTitle>{activePage.label}</SheetTitle>
+                <SheetDescription>{activePage.description}</SheetDescription>
               </SheetHeader>
               <div className="flex-1 overflow-y-auto p-4">
                 <EmptyState
-                  icon={<activeTool.Icon className="h-8 w-8" />}
-                  title={`${activeTool.label} is on the way.`}
-                  description={activeTool.body}
+                  icon={<activePage.Icon className="h-8 w-8" />}
+                  title={`${activePage.label} is on the way.`}
+                  description={activePage.body}
                 />
               </div>
             </>
@@ -209,23 +208,23 @@ function TopBar({ onOpenMobile }: { onOpenMobile: () => void }) {
         </SheetContent>
       </Sheet>
 
-      {/* Divider + the 6 dept-specific tabs (when on a department page). */}
-      {deptCats && (
+      {/* Divider + department workspace folders. */}
+      {folders && (
         <>
           <TopBarDivider />
-          <nav aria-label="Department views" className="hidden min-w-0 items-center gap-1 overflow-x-auto md:flex">
-            {deptCats.map((c) => {
-              const active = c.value === currentCat;
+          <nav aria-label="Workspace folders" className="hidden min-w-0 items-center gap-1 overflow-x-auto md:flex">
+            {folders.map((folder) => {
+              const active = folder.value === currentFolder;
               return (
                 <Link
-                  key={c.value}
-                  to={`/departments/${deptId}?cat=${c.value}`}
+                  key={folder.value}
+                  to={`/departments/${deptId}?cat=${folder.value}`}
                   className={cn(
                     "shrink-0 rounded-md px-2 py-1 text-sm transition-colors",
                     active ? "font-medium text-foreground" : "text-muted-foreground hover:text-foreground"
                   )}
                 >
-                  {c.label}
+                  {folder.label}
                 </Link>
               );
             })}
