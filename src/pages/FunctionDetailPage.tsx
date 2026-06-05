@@ -14,7 +14,7 @@ export function FunctionDetailPage() {
 
   return (
     <DetailPageShell
-      actions={<ButtonLink to={`/functions/${fn.id}`} variant="outline">Open workspace</ButtonLink>}
+      actions={<ButtonLink to={`/departments/${fn.id}`} variant="outline">Open workspace</ButtonLink>}
       backAction={<Link className="text-theme-sm font-medium text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200" to="/functions">Back to functions</Link>}
       description={fn.summary}
       sidebar={

@@ -1,5 +1,5 @@
 import { lazy, Suspense } from "react";
-import { BrowserRouter, Routes, Route, Navigate, useParams } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { Toaster } from "sonner";
 import { CommonsProvider } from "@/lib/store";
 import { CommonsShell } from "@/components/CommonsShell";
@@ -21,11 +21,6 @@ const CommonsOverviewPage = lazy(() => import("@/pages/CommonsOverviewPage").the
 const FunctionMapPage = lazy(() => import("@/pages/FunctionMapPage").then(m => ({ default: m.FunctionMapPage })));
 const FunctionDetailPage = lazy(() => import("@/pages/FunctionDetailPage").then(m => ({ default: m.FunctionDetailPage })));
 
-function DepartmentRedirect() {
-  const { dept } = useParams();
-  return <Navigate to={`/functions/${dept ?? "sales"}`} replace />;
-}
-
 export default function App() {
   return (
     <CommonsProvider>
@@ -43,15 +38,14 @@ export default function App() {
             <Route path="/home" element={<HomePage />} />
             <Route path="/commons" element={<CommonsOverviewPage />} />
             <Route path="/functions" element={<FunctionMapPage />} />
-            <Route path="/functions/:functionId/about" element={<FunctionDetailPage />} />
-            <Route path="/functions/:functionId" element={<DepartmentPage />} />
+            <Route path="/functions/:functionId" element={<FunctionDetailPage />} />
             <Route path="/inbox" element={<InboxPage />} />
             <Route path="/queue" element={<QueuePage />} />
             <Route path="/recent" element={<RecentPage />} />
             <Route path="/orgchart" element={<OrgChartPage />} />
             <Route path="/objects/detail/:id" element={<ObjectDetailPage />} />
             <Route path="/objects/:type" element={<ObjectsPage />} />
-            <Route path="/departments/:dept" element={<DepartmentRedirect />} />
+            <Route path="/departments/:dept" element={<DepartmentPage />} />
             <Route path="/templates" element={<TemplatesPage />} />
             <Route path="/templates/:slug" element={<TemplateDetailPage />} />
             <Route path="/settings/:setting" element={<SettingsPage />} />
